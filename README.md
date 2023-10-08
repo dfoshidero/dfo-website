@@ -1,7 +1,25 @@
-# Getting Started with Create React App
+# Personal Portfolio Website for Daniel Favour Oshidero
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was bootstrapped with HTML, JavaScript, and SASS.
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+_______________________________________________
 ## Available Scripts
 
 In the project directory, you can run:
