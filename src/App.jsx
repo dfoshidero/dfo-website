@@ -1,13 +1,14 @@
-import './App.css';
+import './App.scss';
+import sass from 'sass';
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Header from './components/Header';
+import Navbar from './components/navbar/Navbar';
 import Main from './components/pages/Main';
 
 function App() {
   return (
     <BrowserRouter>
-      <Header />
+      <Navbar />
       <Routes>
         <Route path="/" component={Main} />
       </Routes>

@@ -1,0 +1,38 @@
+.navitem {
+    padding: 20px;
+    display: inline-block;
+    text-decoration: none;
+    color: #ffffff;
+    transition: background-color 0.3s, color 0.3s;
+    text-align: center;
+    height: 100%;
+    width: 100px;
+}
+
+.navitem:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.navitem:active {
+    background-color: #ff4136; /* Change background color when clicked */
+    color: #fff; /* Change text color when clicked */
+}
+
+
+.navbar {
+    border: 1px solid #ffffff;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.toolbar {
+    width: inherit;
+    display: flex;
+    justify-content: center;
+    transition: width 0.3s;
+}
+
+// .toolbar:hover {
+//     width: 100vw;
+// }
