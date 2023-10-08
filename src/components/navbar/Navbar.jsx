@@ -14,7 +14,7 @@ const TransparentAppBar = styled(AppBar)({
 export default function TransparentNavbar() {
   return (
     <TransparentAppBar position="static" className="navbar">
-      <Toolbar className="toolbar">
+      <Toolbar disableGutters className="toolbar">
         <a className="navitem" href="about">
           About
         </a>
