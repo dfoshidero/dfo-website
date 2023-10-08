@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/personal-website/static/css/main.7437f346.css",
+    "main.js": "/personal-website/static/js/main.c951517d.js",
+    "static/media/warren-umoh-aQVnWyP3AYA-unsplash.jpg": "/personal-website/static/media/warren-umoh-aQVnWyP3AYA-unsplash.39151199192e24386d11.jpg",
+    "index.html": "/personal-website/index.html",
+    "main.7437f346.css.map": "/personal-website/static/css/main.7437f346.css.map",
+    "main.c951517d.js.map": "/personal-website/static/js/main.c951517d.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.7437f346.css",
+    "static/js/main.c951517d.js"
+  ]
+}
