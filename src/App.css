@@ -1,38 +1,18 @@
-.App {
-  text-align: center;
+/* Define a dark background color */
+body {
+  background-color: #333; /* You can change this color to your preferred dark background color */
+  color: #fff; /* Text color on the dark background */
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* Style links to make them stand out */
+a {
+  color: #ffcc00; /* Link color on the dark background */
+  text-decoration: none; /* Remove underlines from links */
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+a:hover {
+  text-decoration: underline; /* Add underline on hover */
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
+/* Customize other elements as needed */
+/* For example, headings, buttons, etc. */
