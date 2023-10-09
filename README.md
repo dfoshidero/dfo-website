@@ -5,7 +5,7 @@ This project was bootstrapped with HTML, JavaScript, and SASS.
 
 
 
-
+<!-- <!doctype html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="./favicon.png"><title>Daniel Favour Oshidero</title><script type="text/javascript" src="/static/js/main.c951517d.js"></script><link href="/static/css/main.7437f346.css" rel="stylesheet"></head><body><div id="root"></div></body></html> -->
 
 
 
