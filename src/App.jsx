@@ -1,19 +1,30 @@
 import "./App.scss";
 import sass from "sass";
 import React from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from "./components/navbar/Navbar";
-import Main from "./components/pages/Main";
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
+
+
+function handlePageChange(e) {
+  if (e.target.id === "linkedin-link") {
+    window.location.href="https://www.linkedin.com/in/favourdo/"
+  }
+  }
+
 
 function App() {
   return (
-    <BrowserRouter>
+    <div>
+
       <Navbar />
-      <Routes>
-        <Route path="/" component={Main} />
-      </Routes>
-      <p className="footerMessage" >Website Build In Progress.</p>
-    </BrowserRouter>
+      <p className="footerMessage">Website Build In Progress.</p>
+
+      <div className="links">
+        <LinkedInIcon id="linkedin-link" onClick={handlePageChange}/>
+      </div>
+  
+
+    </div>
   );
 }
 

@@ -21,6 +21,12 @@ body {
   align-items: bottom;
 }
 
+.links {
+  display: flex;
+  justify-content: center;
+  align-items: bottom;
+}
+
 html::before {
   content: "";
   position: absolute;
