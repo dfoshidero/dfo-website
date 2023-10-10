@@ -15,6 +15,12 @@ body {
   height: 100vh;
 }
 
+.footerMessage {
+  display: flex;
+  justify-content: center;
+  align-items: bottom;
+}
+
 html::before {
   content: "";
   position: absolute;
