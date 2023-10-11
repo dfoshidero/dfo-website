@@ -24,6 +24,10 @@ html::before {
   z-index: -1;
 }
 
+.isPageOpen html::before {
+  background-color: rgba(0, 0, 0, 0.8); /* Increase opacity */
+}
+
 .app-container {
   position: relative;
   height: 100vh;
