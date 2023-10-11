@@ -1,7 +1,17 @@
 .linkItem:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .linkItem {
-    margin: 10px;
+  margin: 10px;
+}
+
+.footerMessage {
+    display: flex;
+    justify-content: center;
+}
+
+.links {
+    display: flex;
+    justify-content: center;
 }
