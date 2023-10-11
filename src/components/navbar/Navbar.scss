@@ -53,6 +53,7 @@
     .navbar {
         flex-direction: column; /* Stack items vertically */
         padding: 20px 10px;
+        border-radius: 20px;
     }
 
     .navitem {
@@ -64,15 +65,10 @@
     }
 
     .navitem::before {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        left: 20%;
-        width: 60%;
-        height: 0;
-        border-bottom: 2px solid transparent;
-        transition: height 0.3s, border-color 0.3s; //transition to highlight hovered page with underline. --> .navitem:hover::before
-        pointer-events: none;
+        left: 17.5%;
+        width: 65%;
+        border-bottom: 1px solid transparent;
+        border-radius: 4px;
     }
 
     .html:hover {

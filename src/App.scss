@@ -42,3 +42,14 @@ html::before {
   bottom: 50px;
   width: 100%;
 }
+
+@media (max-width: 768px) {
+
+  .footer {
+    bottom: 150px;
+  }
+
+  .main {
+  margin-bottom: 150px;
+  }
+}
