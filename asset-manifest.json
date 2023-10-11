@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/static/css/main.928a73e0.css",
-    "main.js": "/static/js/main.c8aa8150.js",
+    "main.css": "/static/css/main.f2debc24.css",
+    "main.js": "/static/js/main.94d13574.js",
     "static/media/warren-umoh-aQVnWyP3AYA-unsplash.jpg": "/static/media/warren-umoh-aQVnWyP3AYA-unsplash.39151199192e24386d11.jpg",
     "index.html": "/index.html",
-    "main.928a73e0.css.map": "/static/css/main.928a73e0.css.map",
-    "main.c8aa8150.js.map": "/static/js/main.c8aa8150.js.map"
+    "main.f2debc24.css.map": "/static/css/main.f2debc24.css.map",
+    "main.94d13574.js.map": "/static/js/main.94d13574.js.map"
   },
   "entrypoints": [
-    "static/css/main.928a73e0.css",
-    "static/js/main.c8aa8150.js"
+    "static/css/main.f2debc24.css",
+    "static/js/main.94d13574.js"
   ]
 }
