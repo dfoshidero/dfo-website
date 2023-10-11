@@ -2,6 +2,7 @@
 import React from "react";
 import "./Navbar.scss";
 import "sass";
+import FloatingPage from '../floatingpages/FloatingPage';
 import { styled } from "@mui/system";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
@@ -11,22 +12,44 @@ const TransparentAppBar = styled(AppBar)({
   boxShadow: "none",
 });
 
+const handleNavClick = (e) => {
+  e.preventDefault();
+  if (e.target.id === "about") {
+    <FloatingPage 
+      id = "about"
+    />
+  }
+};
+
 export default function TransparentNavbar() {
   return (
     <TransparentAppBar position="static" className="navbar">
       <Toolbar disableGutters className="toolbar">
-        <a className="navitem" href="about">
+
+        <button className="navitem" 
+        id="about" 
+        onClick={handleNavClick}>
           About
-        </a>
-        <a className="navitem" href="experience">
+        </button>
+
+        <button className="navitem" 
+        id="experience" 
+        onClick={handleNavClick}>
           Experience
-        </a>
-        <a className="navitem" href="portfolio-s">
+        </button>
+
+        <button className="navitem" 
+        id="portfolio-projects" 
+        onClick={handleNavClick}>
           Projects
-        </a>
-        <a className="navitem" href="portfolio-d">
+        </button>
+
+        <button className="navitem" 
+        id="portfolio-design" 
+        onClick={handleNavClick}>
           Portfolio
-        </a>
+        </button>
+
       </Toolbar>
     </TransparentAppBar>
   );
