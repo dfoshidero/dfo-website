@@ -1,59 +1,40 @@
-html {
-  background: linear-gradient(0deg, rgba(1, 0, 2, 0.6), rgba(1, 18, 59, 0.6)), url('../public/warren-umoh-aQVnWyP3AYA-unsplash.jpg');
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  color: #fff;
-  position: relative;
-  background-position: center;
+@import './utils/GlobalStyles.scss';
+
+.App {
+  text-align: center;
 }
 
-body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
 }
 
-html::before {
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.4); /* Semi-transparent black overlay */
-  z-index: -1;
-}
-
-.isPageOpen html::before {
-  background-color: rgba(0, 0, 0, 0.8); /* Increase opacity */
-}
-
-.app-container {
-  position: relative;
-  height: 100vh;
-  display: flex;
-}
-
-
-.main {
-  margin: 20px;
-  display: flex;
-  align-items: center;
-}
-
-.footer {
-  position: absolute;
-  bottom: 50px;
-  width: 100%;
-}
-
-@media (max-width: 768px) {
-
-  .footer {
-    bottom: 150px;
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
   }
+}
 
-  .main {
-  margin-bottom: 150px;
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
   }
 }

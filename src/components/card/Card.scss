@@ -1,0 +1,77 @@
+@import '../../utils/GlobalStyles.scss';
+
+.card {
+  display: flex;
+  flex-direction: column;
+  background-color: $secondary-background-color;
+  /* Slightly lighter or darker for a subtle modern effect */
+  border-radius: 8px;
+  border: $line-width solid $border-color;
+  /* Ensure the border is subtle */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  /* Softer shadow for a sleeker look */
+  transition: transform 0.3s, box-shadow 0.3s;
+  margin: 9px;
+  opacity: 0.6;
+
+  max-height: 100%;
+  max-width: 100%;
+
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
+    /* Softer shadow on hover */
+    opacity: 1;
+  }
+
+  .card-header {
+    display: flex; // Set card-header as a flex container
+    justify-content: space-between; // Space out children to the far ends
+    border-bottom: $line-width solid #545454;
+    margin: 0px 10px;
+    
+    h2 {
+      margin: 4px 0px;
+      font-size: $standard-font-size;
+      white-space: nowrap; 
+    }
+
+    .title {
+      flex-grow: 1;
+        color: $important-font-colour;
+        font-weight: $bigger-font-weight;
+    }
+
+    .extra {
+        color: $standard-font-colour;
+        font-weight: $standard-font-weight;
+    }
+}
+
+
+  .content {
+    display: flex;
+    /* Added for flexbox layout */
+    flex-direction: column;
+    /* Align children vertically */
+    justify-content: flex-start;
+    /* Start from the top */
+    align-items: center;
+    /* Center horizontally */
+    flex: 1;
+    overflow-y: auto;
+    min-height: 0;
+    min-width: 0;
+
+    transition: mask-image 0.3s ease-in-out;
+  }
+
+  p {
+    color: $standard-font-colour;
+    /* Lighter text color for content */
+    font-size: $standard-font-size;
+    /* Smaller font size for content */
+    font-weight: $standard-font-weight;
+  }
+}

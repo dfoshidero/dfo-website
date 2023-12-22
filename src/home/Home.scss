@@ -1,0 +1,103 @@
+@import '../utils/GlobalStyles.scss';
+
+.page-framer {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 61vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+
+
+    opacity: 0;
+    animation: fadeInAnimation ease 1s;
+    animation-delay: 0.9s;
+    /* Adjust the delay as needed */
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    /* Stack header and main content vertically */
+
+    .main-content-framer {
+        display: grid;
+        grid-template-columns: repeat(6, 1fr); // Six columns
+        grid-template-rows: repeat(4, 1fr); // Four rows
+
+        width: 61vw;
+        height: 80vh;
+
+
+        // Adjust card sizes within the main content framer
+        .card--six-columns {
+            grid-column: span 6; // Full width across all six columns
+        }
+
+        .card--five-columns {
+            grid-column: span 5; // Full width across all six columns
+        }
+
+        .card--four-columns {
+            grid-column: span 4; // Full width across all six columns
+        }
+
+        .card--three-columns {
+            grid-column: span 3; // Half width, covering three columns
+        }
+
+        .card--two-columns {
+            grid-column: span 2; // One-third width, covering two columns
+        }
+
+        .card--one-column {
+            grid-column: span 1; // One-third width, covering two columns
+        }
+
+        .card--four-rows {
+            grid-row: span 4; // Full height across all four rows
+        }
+
+        .card--three-rows {
+            grid-row: span 3; // Three quarters height, covering three rows
+        }
+
+        .card--two-rows {
+            grid-row: span 2; // Half height, covering two rows
+        }
+
+        .card--one-row {
+            grid-row: span 1; // Quarter height, covering one row
+        }
+
+        // ... Additional sizing classes as needed
+    }
+}
+
+@keyframes scaleUp {
+    from {
+        transform: scale(0);
+        opacity: 0.3;
+        /* Starting opacity */
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 0.6;
+        /* Ending opacity */
+    }
+}
+
+@keyframes fadeInAnimation {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.animate-from-middle {
+    animation: scaleUp 1s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+    animation-delay: 0.9s;
+}

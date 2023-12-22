@@ -1,0 +1,49 @@
+@import '../../utils/GlobalStyles.scss';
+
+.experience-list {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+    
+}
+
+.experience-item {
+    cursor: pointer;
+    padding-top: 4px;
+    padding-bottom: 10px;
+    margin-left: 10px;
+    border-bottom: 1px solid $border-color;
+    transition: background-color 0.2s;
+
+    &:hover {
+        background-color: $tertiary-background-color;
+        margin: 0; /* Remove margins */
+        padding: 4px 0px 10px 10px; /* Adjust padding */
+        border-bottom: 0px solid $border-color;
+
+        .experience-title,
+        .experience-shortdesc,
+        .experience-location {
+            color: $important-font-colour; // Change font color on hover
+            
+        }
+        
+    }
+
+    .experience-title {
+        font-size: $standard-font-size;
+        font-weight: $standard-font-weight;
+        color: $important-font-colour;
+    }
+
+    .experience-shortdesc,
+    .experience-location {
+        color: $standard-font-colour;
+        font-size: $standard-font-size; // Smaller font size for the short description
+        padding-top: 4px; // Space between title and short description 
+    }
+}
+
+.experience-modal-content {
+    // styles for the modal content
+}

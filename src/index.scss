@@ -1,0 +1,14 @@
+@import './utils/GlobalStyles.scss';
+
+// Global styles
+* {
+  box-sizing: border-box;
+}
+
+a {
+  color: $primary-background-color;
+  text-decoration: none; // Remove underline from links
+  &:hover {
+    text-decoration: underline; // Add underline on hover for links
+  }
+}

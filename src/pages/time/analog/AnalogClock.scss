@@ -1,0 +1,70 @@
+@import "../../../utils/GlobalStyles.scss";
+
+$mark-dims: 70%;
+$hand-dims: $mark-dims/2;
+
+.clock {
+    position: relative;
+    margin: 5%;
+    width:55%; // Clock takes full width of the container
+    padding-bottom: 55%; // Padding bottom equal to full width for a square aspect ratio
+    border: 2% solid black; // Responsive border
+    border-radius: 50%;
+    background-color: $secondary-background-color;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+  
+  .hand {
+    position: absolute;
+    bottom: $hand-dims; // Centered vertically
+    background-color: $important-font-colour;
+    transform-origin: bottom;
+    transition: transform 0.05s ease-in-out;
+  }
+  
+  .hour-hand {
+    width: 2%; // Responsive width
+    height: 25%; // Responsive height
+  }
+  
+  .minute-hand {
+    width: 2%;
+    height: 35%;
+  }
+  
+  .second-hand {
+    width: 1%;
+    height: 40%;
+    background-color: red;
+  }
+
+  .mark {
+    position: absolute;
+    bottom: $hand-dims;
+    width: $mark-dims;
+    height: $mark-dims;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform-origin: center bottom;
+  }
+  
+  .hour-mark .mark-line {
+    width: 1%; // Reduced width
+    height: 8%; // Height to fit within the clock's radius
+    background-color: $standard-font-colour;
+    transform: translateX(-50%) translateY(-300%); // Adjusting position to keep within bounds
+  }
+  
+  .minute-mark .minute-mark-line {
+    width: 1%; // Reduced width for minute marks
+    height: 5%; // Height to fit within the clock's radius
+    background-color: $border-color;
+    transform: translateX(-50%) translateY(-600%); // Adjusting position to keep within bounds
+  }
+  
+}
+  
+  

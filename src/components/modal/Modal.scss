@@ -1,0 +1,48 @@
+@import '../../utils/GlobalStyles.scss';
+
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  opacity: 0;
+  transition: background-color 0.3s, opacity 1s; /* Longer transition for opacity */
+}
+
+.modal {
+  background-color: $tertiary-background-color;
+  width: 50vw; 
+  height: 60vh;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  z-index: 1001;
+  opacity: 0;
+  transition: opacity 1s;
+}
+
+
+.modal-backdrop.open {
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 1;
+}
+
+.modal.open {
+  opacity: 1;
+  animation: fadeIn 0.3s; /* Define the fade-in animation */
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

@@ -1,25 +1,7 @@
-# Personal Portfolio Website for Daniel Favour Oshidero
+# Getting Started with Create React App
 
-This project was bootstrapped with HTML, JavaScript, and SASS.
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-
-
-
-<!-- <!doctype html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="./favicon.png"><title>Daniel Favour Oshidero</title><script type="text/javascript" src="/static/js/main.c951517d.js"></script><link href="/static/css/main.7437f346.css" rel="stylesheet"></head><body><div id="root"></div></body></html> -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-_______________________________________________
 ## Available Scripts
 
 In the project directory, you can run:
