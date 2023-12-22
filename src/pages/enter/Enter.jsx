@@ -18,6 +18,7 @@ function Enter() {
   }, []);
 
   const enterSite = () => {
+    alert("Website is still undergoing development!");
     navigate('/home'); // Navigating to the main content
   };
 
