@@ -35,7 +35,7 @@ function Card({ title, extra, children, onClick, className, style }) {
     <div className={cardClasses} onClick={onClick} style={style}>
       <div className="card-header">
         <h2 className="title">{title}</h2>
-        <h2 className="extra">{extra}</h2>
+        <div className="extra">{extra}</div>
       </div>
       <div className='content' ref={contentRef}>
         {children}

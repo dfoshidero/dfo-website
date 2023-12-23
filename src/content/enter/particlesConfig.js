@@ -80,7 +80,7 @@ export const particlesOptions = {
           "mix": true,
           "opacity": 0.8,
           "color": {
-            "value": "#ff0000"
+            "value": "#1e1e1e"
           },
           "size": 40,
           "divs": {
@@ -184,7 +184,7 @@ export const particlesOptions = {
         }
       },
       "color": {
-        "value": "#1b1e34",
+        "value": "#455c56",
         "animation": {
           "h": {
             "count": 0,

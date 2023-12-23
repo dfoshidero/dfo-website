@@ -27,45 +27,52 @@
         width: 61vw;
         height: 80vh;
 
+        .card {
+            min-width: 0; // Prevents stretching
+            max-width: 100%; // Ensures it doesn't grow beyond the cell
+            min-height: 0; // Prevents stretching
+            max-height: 100%; // Ensures it doesn't grow beyond the cell
+            // Apply any other common styles here
+        }        
 
         // Adjust card sizes within the main content framer
-        .card--six-columns {
+        .six-columns {
             grid-column: span 6; // Full width across all six columns
         }
 
-        .card--five-columns {
+        .five-columns {
             grid-column: span 5; // Full width across all six columns
         }
 
-        .card--four-columns {
+        .four-columns {
             grid-column: span 4; // Full width across all six columns
         }
 
-        .card--three-columns {
+        .three-columns {
             grid-column: span 3; // Half width, covering three columns
         }
 
-        .card--two-columns {
+        .two-columns {
             grid-column: span 2; // One-third width, covering two columns
         }
 
-        .card--one-column {
+        .one-column {
             grid-column: span 1; // One-third width, covering two columns
         }
 
-        .card--four-rows {
+        .four-rows {
             grid-row: span 4; // Full height across all four rows
         }
 
-        .card--three-rows {
+        .three-rows {
             grid-row: span 3; // Three quarters height, covering three rows
         }
 
-        .card--two-rows {
+        .two-rows {
             grid-row: span 2; // Half height, covering two rows
         }
 
-        .card--one-row {
+        .one-row {
             grid-row: span 1; // Quarter height, covering one row
         }
 

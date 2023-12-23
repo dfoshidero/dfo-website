@@ -31,7 +31,7 @@
     border-bottom: $line-width solid #545454;
     margin: 0px 10px;
     
-    h2 {
+    .title, .extra {
       margin: 4px 0px;
       font-size: $standard-font-size;
       white-space: nowrap; 

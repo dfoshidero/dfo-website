@@ -1,0 +1,30 @@
+@import '../../utils/GlobalStyles.scss';
+
+.education-list {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+    
+}
+
+.education-item {
+    padding-top: 4px;
+    padding-bottom: 10px;
+    margin-left: 10px;
+    border-bottom: 1px solid $border-color;
+    transition: background-color 0.2s;
+
+
+    .education-title {
+        font-size: $standard-font-size;
+        font-weight: $standard-font-weight;
+        color: $important-font-colour;
+    }
+
+    .education-grad,
+    .education-location {
+        color: $standard-font-colour;
+        font-size: $standard-font-size; // Smaller font size for the short description
+        padding-top: 4px; // Space between title and short description 
+    }
+}

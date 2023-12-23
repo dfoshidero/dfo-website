@@ -9,16 +9,51 @@ $secondary-text-color: #666666;
 $border-color: #545454;
 $line-width: 1px;
 
-$smaller-font-size: 0.57rem;
+$smaller-font-size: 0.61rem;
 
-$standard-font-size: 0.58rem;
+$standard-font-size: 0.62rem;
 $standard-font-weight: 200;
 
-$bigger-font-size: 0.65rem;
+$bigger-font-size: 0.68rem;
 $bigger-font-weight: 300;
 
 $standard-font-colour: #999;
 $important-font-colour: #e0e0e0;
+
+@font-face {
+  font-family: 'Quicksand';
+  src: url('../assets/fonts/Quicksand-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Quicksand';
+  src: url('../assets//fonts/Quicksand-Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Quicksand';
+  src: url('../assets//fonts/Quicksand-Light.ttf') format('truetype');
+  font-weight: 300; // Light
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Quicksand';
+  src: url('../assets//fonts/Quicksand-Medium.ttf') format('truetype');
+  font-weight: 500; // Medium
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Quicksand';
+  src: url('../assets//fonts/Quicksand-SemiBold.ttf') format('truetype');
+  font-weight: 600; // Semi-Bold
+  font-style: normal;
+}
 
 
 
@@ -28,7 +63,7 @@ html, body {
     padding: 0;
     background-color: $primary-background-color;
     color: $primary-text-color;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Quicksand', sans-serif;
     line-height: 1.6;
     overflow: hidden;
 }

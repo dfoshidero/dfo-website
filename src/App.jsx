@@ -5,12 +5,12 @@ import "./App.scss";
 import { ModalProvider } from "./utils/modalContext"
 import Modal from "./components/modal/Modal";
 
-import Enter from "./pages/enter/Enter";
+import Enter from "./content/enter/Enter";
 import Home from "./home/Home";
-import Experience from "./pages/experience/Experience";
-import Projects from "./pages/projects/Projects";
-import Portfolio from "./pages/portfolio/Portfolio";
-import Contact from "./pages/contact/Contact";
+import Experience from "./content/experience/Experience";
+import Projects from "./content/projects/Projects";
+import Portfolio from "./content/portfolio/Portfolio";
+import Contact from "./content/contact/Contact";
 
 function App() {
   return (

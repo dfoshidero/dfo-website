@@ -65,7 +65,7 @@ const experiences = [
   // ... other experiences
 ];
 
-export function ExperienceCard() {
+export default function ExperienceCard() {
   const { openModal } = useContext(ModalContext);
 
   return (
@@ -91,8 +91,4 @@ export function ExperienceCard() {
       ))}
     </ul>
   );
-}
-
-export default function Experience() {
-
 }
