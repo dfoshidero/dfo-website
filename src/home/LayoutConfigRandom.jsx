@@ -15,10 +15,11 @@
         'TIMEZONE': [{ columns: 1, rows: 1 }],
         'CONNECT': [{ columns: 1, rows: 1 }],
         'PROJECTS': [{ columns: 2, rows: 2 }, { columns: 2, rows: 3 }],
-        'MY WORK(S)': [{ columns: 2, rows: 2 }, { columns: 2, rows: 1 }],
+        'MY WORK(S)': [{ columns: 2, rows: 2 }],
         'EDUCATION': [{ columns: 2, rows: 2 }, { columns: 2, rows: 1 }],
         'RECOMMENDATIONS': [{ columns: 2, rows: 1 }],
         'STATUS': [{ columns: 2, rows: 1 }, { columns: 1, rows: 1 }],
+        'EXPERTISE': [{ columns: 1, rows: 2 }, { columns: 1, rows: 1 }], // Will include skills and certifications. CERTIFIED SKILLS go first.
     };
 
     const gridColumns = 6;
