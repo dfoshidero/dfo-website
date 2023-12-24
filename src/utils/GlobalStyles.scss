@@ -58,16 +58,7 @@ $important-font-colour: #e0e0e0;
 
 
 // Common styles
-html, body {
-    margin: 0;
-    padding: 0;
-    background-color: $primary-background-color;
-    color: $primary-text-color;
-    font-size: 16px;
-    font-family: 'Quicksand', sans-serif;
-    line-height: 1.6;
-    overflow: hidden;
-}
+
 
 /* Add scrollbar styling */
 ::-webkit-scrollbar {

@@ -3,7 +3,6 @@
 // Global styles
 * {
   box-sizing: border-box;
-  font-size: 16px;
 }
 
 a {
@@ -12,4 +11,15 @@ a {
   &:hover {
     text-decoration: underline; // Add underline on hover for links
   }
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: $primary-background-color;
+  color: $primary-text-color;
+  font-size: 16px;
+  font-family: 'Quicksand', sans-serif;
+  line-height: 1.6;
+  overflow: hidden;
 }
