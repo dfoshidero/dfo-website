@@ -1,15 +1,14 @@
 import React from 'react';
 import './Portfolio.scss';
 
-function Portfolio() {
+function PortfolioCard() {
   // Portfolio page content
   return (
     <div className="about-content">
-      <h1>Portfolio</h1>
-      <p>This is a lot of information about me.</p>
+      <p>These will be floating bubbles of my design work.</p>
       {/* More content */}
     </div>
   );
 }
 
-export default Portfolio;
+export default PortfolioCard;

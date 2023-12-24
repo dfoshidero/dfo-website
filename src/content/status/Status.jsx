@@ -1,14 +1,15 @@
 import React from 'react';
-import './Projects.scss';
+import './Status.scss';
 
-function ProjectCard() {
+function StatusCard() {
   // Projects page content
   return (
     <div className="about-content">
-      <p>These will be my ongoing/finished projects.</p>
+      <p>This will be my current employment status.
+      </p>
       {/* More content */}
     </div>
   );
 }
 
-export default ProjectCard;
+export default StatusCard;

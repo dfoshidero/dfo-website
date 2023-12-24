@@ -24,6 +24,7 @@ const AnalogClock = () => {
   const secondDegrees = seconds * 6;
 
   return (
+    <div className="clock-container">
     <div className="clock">
       {Array.from({ length: 12 }).map((_, index) => (
         <div
@@ -46,6 +47,7 @@ const AnalogClock = () => {
       <div className="hand hour-hand" style={{ transform: `rotate(${hourDegrees}deg)` }} />
       <div className="hand minute-hand" style={{ transform: `rotate(${minuteDegrees}deg)` }} />
       <div className="hand second-hand" style={{ transform: `rotate(${secondDegrees}deg)` }} />
+    </div>
     </div>
   );
 };

@@ -1,12 +1,9 @@
-
-
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Header from "../components/header/Header"
-import { layouts } from './LayoutConfig';
+import layouts from './LayoutConfigRandom';
 import './Home.scss';
 
 function Home() {
-  const [layoutIndex, setLayoutIndex] = useState(Math.floor(Math.random() * layouts.length));
   const containerRef = useRef(null);
   const [key, setKey] = useState(0); // Add a key state
 
@@ -31,27 +28,16 @@ function Home() {
     });
   }, [key]); // Use the "key" state as a dependency
 
-  const Layout = layouts[layoutIndex];
-
-  const handleRandomizeClick = () => {
-    const newIndex = Math.floor(Math.random() * layouts.length);
-    setLayoutIndex(newIndex);
-
-    if (newIndex === layoutIndex) {
-      handleRandomizeClick();
-    } else {
-      setKey(prevKey => prevKey + 1);
-    }
-  };
-
   return (
     <div>
-    <div className="page-framer" key={key}>
-      <Header onRandomizeClick={handleRandomizeClick} />
-      <div className="main-content-framer" ref={containerRef} >
-        <Layout />
+      <div className="page-framer" key={key}>
+        <Header />
+        <div className="main-content-framer" ref={containerRef} >
+          {layouts.map((LayoutComponent, index) => (
+            <LayoutComponent key={index} />
+          ))}
+        </div>
       </div>
-    </div>
     </div>
   );
 }

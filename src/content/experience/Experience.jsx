@@ -69,26 +69,28 @@ export default function ExperienceCard() {
   const { openModal } = useContext(ModalContext);
 
   return (
-    <ul className="experience-list">
-      {experiences.map(exp => (
-        <li
-        key={exp.id}
-        className="experience-item"
-        onClick={() => {
-          openModal(
-            <div className="experience-modal-content">
-              <h2>{exp.title}</h2>
-              <h3>{exp.location}</h3>
-              <p>{exp.longdesc}</p>
-            </div>
-          );
-        }}
-      >
-          <div className="experience-title">{exp.title}</div>
-          <div className="experience-shortdesc">{exp.shortdesc}</div>
-          <div className="experience-location">{exp.location}</div>
-        </li>
-      ))}
-    </ul>
+    <div className="experience-container"> {/* New Container */}
+      <ul className="experience-list">
+        {experiences.map(exp => (
+          <li
+            key={exp.id}
+            className="experience-item"
+            onClick={() => {
+              openModal(
+                <div className="experience-modal-content">
+                  <h2>{exp.title}</h2>
+                  <h3>{exp.location}</h3>
+                  <p>{exp.longdesc}</p>
+                </div>
+              );
+            }}
+          >
+            <div className="experience-title">{exp.title}</div>
+            <div className="experience-shortdesc">{exp.shortdesc}</div>
+            <div className="experience-location">{exp.location}</div>
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 }

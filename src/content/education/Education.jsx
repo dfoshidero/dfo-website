@@ -36,6 +36,7 @@ const educations = [
 export default function EducationCard() {
 
   return (
+    <div className="education-container">
     <ul className="education-list">
       {educations.map(ed => (
         <li
@@ -48,5 +49,6 @@ export default function EducationCard() {
         </li>
       ))}
     </ul>
+    </div>
   );
 }

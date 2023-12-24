@@ -1,19 +1,27 @@
 @import "../../../utils/GlobalStyles.scss";
 
 $mark-dims: 70%;
-$hand-dims: $mark-dims/2;
+$hand-dims: calc($mark-dims/2);
+
+.clock-container{
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
 
 .clock {
-    position: relative;
-    margin: 5%;
-    width:55%; // Clock takes full width of the container
-    padding-bottom: 55%; // Padding bottom equal to full width for a square aspect ratio
-    border: 2% solid black; // Responsive border
-    border-radius: 50%;
+    position: absolute;
+    width:60%; // Clock takes full width of the container
+    height: 60%; // Padding bottom equal to full width for a square aspect ratio
     background-color: $secondary-background-color;
     display: flex;
-    align-items: center;
+    align-items: center;  
     justify-content: center;
+    margin-bottom: 20%;
 
   
   .hand {

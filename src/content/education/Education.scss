@@ -1,10 +1,19 @@
 @import '../../utils/GlobalStyles.scss';
 
+.education-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; // Aligns items to the start (top) of the container
+    width: 100%; // Full width
+    height: 100%; // Full height to occupy the card
+    overflow-y: auto; // Adds scrolling for overflow
+}
+
 .education-list {
     padding: 0;
     margin: 0;
     list-style-type: none;
-    
+    width: 100%; // Full width of the container
 }
 
 .education-item {
