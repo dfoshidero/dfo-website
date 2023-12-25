@@ -3,8 +3,11 @@
 .contact-container {
     display: flex;
     flex-direction: column;
-    justify-content: space-around; // Evenly spaces the child elements
-    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .connect-button {
@@ -20,6 +23,7 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     opacity: 0.6;
     text-wrap: nowrap;
+    width: 60%;
 
     &:hover {
         background-color: $tertiary-background-color;

@@ -52,17 +52,14 @@
 
   .content {
     display: flex;
-    /* Added for flexbox layout */
     flex-direction: column;
-    /* Align children vertically */
-    justify-content: center;
-    /* Start from the top */
+    justify-content: flex-start;
     align-items: center;
-    /* Center horizontally */
     flex: 1;
     overflow-y: auto;
     min-height: 0;
     min-width: 0;
+
 
     transition: mask-image 0.3s ease-in-out;
   }

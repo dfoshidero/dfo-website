@@ -7,7 +7,6 @@ function StatusCard() {
     <div className="about-content">
       <p>This will be my current employment status.
       </p>
-      {/* More content */}
     </div>
   );
 }

@@ -16,7 +16,7 @@
         'CONNECT': [{ columns: 1, rows: 1 }],
         'PROJECTS': [{ columns: 2, rows: 2 }, { columns: 2, rows: 3 }],
         'MY WORK(S)': [{ columns: 2, rows: 2 }],
-        'EDUCATION': [{ columns: 2, rows: 2 }, { columns: 2, rows: 1 }],
+        'EDUCATION': [{ columns: 2, rows: 1 }, { columns: 1, rows: 2 }, { columns: 2, rows: 2 }],
         'RECOMMENDATIONS': [{ columns: 2, rows: 1 }],
         'STATUS': [{ columns: 2, rows: 1 }, { columns: 1, rows: 1 }],
         'EXPERTISE': [{ columns: 1, rows: 2 }, { columns: 1, rows: 1 }], // Will include skills and certifications. CERTIFIED SKILLS go first.
@@ -121,12 +121,14 @@
 
 
     // Function to generate layout components based on the random layout
-    const generateLayoutComponents = () => {
+    export const generateLayoutComponents = () => {
         let layoutConfigurations = generateRandomLayout();
-
+    
         return layoutConfigurations.map((config, index) => {
             const cardClasses = `card ${config.size.columns}-columns ${config.size.rows}-rows`;
-
+            // Define a delay based on the card's index
+            const animationDelay = index * 0.1; // Adjust the multiplier to control the speed
+    
             return () => (
                 <Card
                     key={index} // Add a unique key for each card
@@ -135,6 +137,8 @@
                     style={{
                         gridColumn: `span ${config.size.columns}`,
                         gridRow: `span ${config.size.rows}`,
+                        // Apply the animation delay
+                        animationDelay: `${animationDelay}s`,
                     }}
                 >
                     {/* Render card content based on cardType */}
@@ -145,12 +149,7 @@
                     {config.cardType === 'STATUS' && <StatusCard />}
                     {config.cardType === 'MY WORK(S)' && <PortfolioCard />}
                     {config.cardType === 'CONNECT' && <ContactCard />}
-                    
                 </Card>
             );
         });
     };
-
-    const layouts = generateLayoutComponents();
-
-    export default layouts;

@@ -1,11 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react';
-import Header from "../components/header/Header"
-import layouts from './LayoutConfigRandom';
+import Header from "../components/header/Header";
+import { generateLayoutComponents } from './LayoutConfigRandom';
 import './Home.scss';
 
 function Home() {
   const containerRef = useRef(null);
-  const [key, setKey] = useState(0); // Add a key state
+
+  const [layoutComponents, setLayoutComponents] = useState(generateLayoutComponents());
 
   useEffect(() => {
     // Add initial animation class to all cards
@@ -26,14 +27,18 @@ function Home() {
         });
       };
     });
-  }, [key]); // Use the "key" state as a dependency
+  }, []); // Use the "layoutComponents" state as a dependency
+
+  const refreshLayouts = () => {
+    setLayoutComponents(generateLayoutComponents());
+  };
 
   return (
     <div>
-      <div className="page-framer" key={key}>
-        <Header />
+      <div className="page-framer" key={layoutComponents}>
+      <Header onRandomizeClick={refreshLayouts} />
         <div className="main-content-framer" ref={containerRef} >
-          {layouts.map((LayoutComponent, index) => (
+          {layoutComponents.map((LayoutComponent, index) => (
             <LayoutComponent key={index} />
           ))}
         </div>

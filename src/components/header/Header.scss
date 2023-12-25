@@ -9,6 +9,7 @@
     justify-content: space-between;
     margin: 14px 7px;
     border-bottom: $line-width solid $border-color;
+    position: relative; // Add relative positioning to the parent
     
   }
   
@@ -42,7 +43,14 @@
     margin: 10px;
   }
 
+
   .contact-button {
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    justify-items: center;
+
     background-color: $secondary-background-color; // Same as card background
     color: $primary-text-color; // Primary text color for contrast
     border: $line-width solid $border-color; // Border similar to cards
@@ -59,73 +67,86 @@
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12); // Enhanced shadow on hover
         opacity: 1; // Full opacity on hover
         text-decoration: none;
+                transform: translateY(-2px); // Slight lift on hover/focus
+
     }
 }
 
-//CENTERED VERSION
+.shuffle-layout-button {
+  display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  justify-items: center;
+  
+  background-color: #2979ff; // Bright blue for visibility
+  color: $primary-text-color; // Keep the primary text color for contrast
+  border: $line-width solid $border-color; // Keep the border similar to cards
+  margin: 0px 10px;
+  
+  border-radius: 14px;
+  padding: 6px 12px;
+  font-size: $standard-font-size;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s, opacity 0.3s, border-color 0.3s;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  opacity: 0.6;
 
-// .header {
-//     display: grid;
-//     grid-template-columns: 1fr auto 1fr; // Three columns, middle one auto-sized
-//     align-items: center; // Vertically center items
-//     margin: 7px;
-//     margin-top: 14px;
-//     border-bottom: $line-width solid $border-color;
-// }
+  // Apply the pulse animation
+  animation: pulse-glow 2s infinite;
 
-// .profile-name-title {
-//     display: flex;
-//     padding: 2% 0.5%;
-//     align-items: center;
-//     justify-content: center;
-//     grid-column: 2 / 3; // Place it in the middle column
+  &:hover {
+      box-shadow: 0 0 8px rgba(41, 121, 255, 0.8); // Glowing shadow for hover/focus
+      opacity: 1; // Full opacity on hover/focus
+      border-color: #80d8ff; // Lighter border color on hover/focus for the glow effect
+      text-decoration: none;
+      transform: translateY(-2px); // Slight lift on hover/focus
+  }
 
-//     img {
-//         width: 4.5%;
-//         height: 4.5%;
-//         border-radius: 50%;
-//     }
+}
 
-//     .name-title {
-//         line-height: 0.8;
-//     }
+.MuiSvgIcon-root {
+  font-size: $standard-font-size * 1.1 !important; // The !important is to override MUI default styles if necessary
+}
 
-//     .name {
-//         color: $border-color;
-//         width: 10%;
-//         font-size: $smaller-font-size;
-//         margin: 10px;
-//     }
+  @keyframes pulse-glow {
+    0%, 100% {
+      box-shadow: 0 0 8px rgba(41, 121, 255, 0.6);
+    }
+    50% {
+      box-shadow: 0 0 16px rgba(41, 121, 255, 1);
+    }
+  }
 
-//     .title {
-//         width: 10%;
-//         color: $standard-font-colour;
-//         font-size: $smaller-font-size;
-//         margin: 10px;
-//     }
+  @keyframes pulse-glow {
+    0%, 100% {
+      box-shadow: 0 0 8px rgba(41, 121, 255, 0.6);
+    }
+    50% {
+      box-shadow: 0 0 20px rgba(41, 121, 255, 0.9); // Increased glow for visibility
+    }
+  }
+  
+  // Other styles remain unchanged...
 
-// }
+.shuffle-layout-button, .contact-button {
+  display: flex;
+  align-items: center; // Align items in the center vertically
+  justify-content: center; // Center content horizontally
 
+  .button-text {
+    display: inline-block;
+  }
 
+  .button-icon {
+    // Align the icon with the text
+    display: inline-block;
+    margin-left: 4px; // Adjust spacing between text and icon
+  }
+}
 
-// .contact-button {
-//     grid-column: 3 / 4; // Place it in the rightmost column
-//     justify-self: end;
-//     background-color: $secondary-background-color; // Same as card background
-//     color: $primary-text-color; // Primary text color for contrast
-//     border: $line-width solid $border-color; // Border similar to cards
+// Other styles remain unchanged...
 
-//     border-radius: 14px;
-//     padding: 4.5px 16px;
-//     font-size: $standard-font-size;
-//     cursor: pointer;
-//     transition: transform 0.3s, box-shadow 0.3s, opacity 0.3s;
-//     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-//     opacity: 0.6;
-
-//     &:hover {
-//         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12); // Enhanced shadow on hover
-//         opacity: 1; // Full opacity on hover
-//         text-decoration: none;
-//     }
-// }
+.left-container {
+  display: flex;
+}

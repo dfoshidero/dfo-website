@@ -5,7 +5,7 @@ import "./App.scss";
 import { ModalProvider } from "./utils/modalContext"
 import Modal from "./components/modal/Modal";
 
-import Enter from "./content/enter/Enter";
+import Enter from "./content/entry/Enter";
 import Home from "./home/Home";
 import Experience from "./content/experience/Experience";
 import Projects from "./content/projects/Projects";

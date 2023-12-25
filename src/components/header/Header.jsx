@@ -1,6 +1,9 @@
 import React from 'react';
-import './Header.scss'; // Continue using the existing CSS/SCSS file for styling
+import './Header.scss';
 import profileIcon from '../../assets/images/icon.jpeg';
+
+import ArrowOutwardIcon from '@mui/icons-material/ArrowOutward';
+import AutorenewIcon from '@mui/icons-material/Autorenew';
 
 const Header = ({ onRandomizeClick }) => {
   return (
@@ -9,17 +12,25 @@ const Header = ({ onRandomizeClick }) => {
         <img src={profileIcon} alt="Profile Icon" />
         <div className="name-title">
           <div>
-            <span className="name">DFO</span>
+            <span className="name">Daniel Favour Olanrewaju Oshidero</span>
           </div>
           <div>
-            <span className="title">Designer & Programmer.</span>
+            <span className="title">Designer & Programmer // DFVRO</span>
           </div>
         </div>
       </div>
+      
+      <div className="left-container">
+        <button onClick={onRandomizeClick} className="shuffle-layout-button">
+          <span className="button-text">Shuffle Cards</span>
+          <AutorenewIcon fontSize="inherit" className="button-icon" />
+        </button>
 
-      <a href="mailto:dfoshidero@outlook.com" className="contact-button">
-        Contact
-      </a>
+        <a href="mailto:dfoshidero@outlook.com" className="contact-button">
+          <span className="button-text">Contact</span>
+          <ArrowOutwardIcon fontSize="inherit" className="button-icon" />
+        </a>
+      </div>
     </div>
   );
 };

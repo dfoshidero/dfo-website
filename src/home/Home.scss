@@ -1,5 +1,44 @@
 @import '../utils/GlobalStyles.scss';
 
+@keyframes dropIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-100px) scaleY(0.85);
+    }
+    50% {
+        opacity: 0.5;
+        transform: translateY(15px) scaleY(1.1);
+    }
+    65% {
+        transform: translateY(-10px) scaleY(0.95);
+    }
+    80% {
+        transform: translateY(5px) scaleY(1.05);
+    }
+    90% {
+        transform: translateY(-2px) scaleY(0.98);
+    }
+    100% {
+        opacity: 0.6;
+        transform: translateY(0) scaleY(1);
+    }
+}
+@keyframes fadeInAnimation {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.animate-from-middle {
+    animation: scaleUp 1s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+    animation-delay: 0.9s;
+}
+
+
 .page-framer {
     position: absolute;
     top: 50%;
@@ -33,6 +72,11 @@
             min-height: 0; // Prevents stretching
             max-height: 100%; // Ensures it doesn't grow beyond the cell
             // Apply any other common styles here
+
+            animation-name: dropIn;
+            animation-duration: 1.2s; // Slightly longer duration for a more natural feel
+            animation-timing-function: ease-in-out; // Smoother transitions
+            animation-fill-mode: backwards;
         }        
 
         // Adjust card sizes within the main content framer
@@ -80,31 +124,3 @@
     }
 }
 
-@keyframes scaleUp {
-    from {
-        transform: scale(0);
-        opacity: 0.3;
-        /* Starting opacity */
-    }
-
-    to {
-        transform: scale(1);
-        opacity: 0.6;
-        /* Ending opacity */
-    }
-}
-
-@keyframes fadeInAnimation {
-    0% {
-        opacity: 0;
-    }
-
-    100% {
-        opacity: 1;
-    }
-}
-
-.animate-from-middle {
-    animation: scaleUp 1s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
-    animation-delay: 0.9s;
-}

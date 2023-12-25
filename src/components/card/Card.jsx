@@ -9,15 +9,20 @@ function Card({ title, extra, children, onClick, className, style }) {
       const { scrollTop, scrollHeight, clientHeight } = contentRef.current;
       let maskImage;
 
-      if (scrollTop <= 20) {
-        maskImage = 'linear-gradient(to bottom, black calc(100% - 30%), transparent 100%)';
-      } else if (scrollTop >= scrollHeight - clientHeight - 20) {
-        maskImage = 'linear-gradient(to bottom, transparent 0, black 30%)';
-      } else {
-        maskImage = 'linear-gradient(to bottom, transparent 0, black 30%, black calc(100% - 30%), transparent 100%)';
-      }
+      if (scrollHeight > clientHeight) { // Check if scroll bar is present
+        if (scrollTop <= 20) {
+          maskImage = 'linear-gradient(to bottom, black calc(100% - 20%), transparent 100%)';
+        } else if (scrollTop >= scrollHeight - clientHeight - 20) {
+          maskImage = 'linear-gradient(to bottom, transparent 0, black 20%)';
+        } else {
+          maskImage = 'linear-gradient(to bottom, transparent 0, black 20%, black calc(100% - 20%), transparent 100%)';
+        }
 
-      contentRef.current.style.maskImage = maskImage;
+        contentRef.current.style.maskImage = maskImage;
+      } else {
+        // No scroll bar, remove mask image
+        contentRef.current.style.maskImage = 'none';
+      }
     };
 
     const contentElement = contentRef.current;

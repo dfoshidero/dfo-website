@@ -44,7 +44,7 @@ export default function EducationCard() {
         className="education-item"
       >
           <div className="education-title">{ed.title}</div>
-          <div className="education-grad">{ed.graduation}. {ed.achieved}</div>
+          <div className="education-grad">{ed.graduation}, {ed.achieved}</div>
           <div className="education-location">{ed.school} | {ed.location}</div>
         </li>
       ))}
