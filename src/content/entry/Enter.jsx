@@ -18,7 +18,6 @@ function Enter() {
   }, []);
 
   const enterSite = () => {
-    alert("Attention:\n\nThis website is currently under development!\n It has not been optimized for mobile viewing.\n\n Press 'OK' to enter.");
     navigate('/home'); // Navigating to the main content
   };
 

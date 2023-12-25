@@ -3,10 +3,29 @@ import Header from "../components/header/Header";
 import { generateLayoutComponents } from './LayoutConfigRandom';
 import './Home.scss';
 
+import { useMediaQuery } from 'react-responsive';
+const MIN_CARD_WIDTH = 200;
+
 function Home() {
   const containerRef = useRef(null);
 
-  const [layoutComponents, setLayoutComponents] = useState(generateLayoutComponents());
+  const isIntermediateLayout = useMediaQuery({ maxWidth: 6 * MIN_CARD_WIDTH });
+  const isFinalLayout = useMediaQuery({ maxWidth: 4 * MIN_CARD_WIDTH });
+
+  let gridColumns = 6, gridRows = 4;
+  if (isFinalLayout) {
+      gridColumns = 2;
+      gridRows = 12;
+  } else if (isIntermediateLayout) {
+      gridColumns = 4;
+      gridRows = 6;
+  }
+
+  useEffect(() => {
+    refreshLayouts(gridColumns, gridRows);
+  }, [isIntermediateLayout, isFinalLayout,gridRows, gridColumns]);
+
+  const [layoutComponents, setLayoutComponents] = useState(generateLayoutComponents(gridColumns, gridRows));
 
   useEffect(() => {
     // Add initial animation class to all cards
@@ -27,10 +46,10 @@ function Home() {
         });
       };
     });
-  }, []); // Use the "layoutComponents" state as a dependency
+  }, [gridColumns, gridRows]); // Use the "layoutComponents" state as a dependency
 
-  const refreshLayouts = () => {
-    setLayoutComponents(generateLayoutComponents());
+  const refreshLayouts = (gridColumns, gridRows) => {
+    setLayoutComponents(generateLayoutComponents(gridColumns, gridRows));
   };
 
   return (

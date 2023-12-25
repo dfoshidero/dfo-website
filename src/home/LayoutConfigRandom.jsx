@@ -8,7 +8,7 @@
     import StatusCard from '../content/status/Status';
     import PortfolioCard from '../content/portfolio/Portfolio';
     import ContactCard from '../content/contact/Contact';
-
+    
     // Define the possible sizes for each card type
     const cardTypes = {
         'EXPERIENCE': [{ columns: 2, rows: 3 }, { columns: 2, rows: 2 }], // Now an array of sizes
@@ -21,13 +21,10 @@
         'STATUS': [{ columns: 2, rows: 1 }, { columns: 1, rows: 1 }],
         'EXPERTISE': [{ columns: 1, rows: 2 }, { columns: 1, rows: 1 }], // Will include skills and certifications. CERTIFIED SKILLS go first.
     };
-
-    const gridColumns = 6;
-    const gridRows = 4;
-
+    
     // Function to generate a random layout
     // Function to generate a random layout
-    const generateRandomLayout = () => {
+    const generateRandomLayout = (gridColumns, gridRows) => {
         const cardTypeKeys = Object.keys(cardTypes);
         let layout, grid, attempt, allCardTypesUsed;
     
@@ -40,7 +37,7 @@
             for (let row = 1; row <= gridRows && attempt; row++) {
                 for (let col = 1; col <= gridColumns && attempt; col++) {
                     if (!grid[row - 1][col - 1]) {
-                        const availableOptions = getAvailableCardTypesAndSizes(cardTypeKeys, layout, row, col, grid);
+                        const availableOptions = getAvailableCardTypesAndSizes(cardTypeKeys, layout, row, col, grid, gridColumns, gridRows);
                         if (availableOptions.length === 0) {
                             attempt = false;
                             allCardTypesUsed = false;
@@ -67,14 +64,14 @@
     
 
     // Function to get available card types that can fit in the current position
-    const getAvailableCardTypesAndSizes = (cardTypeKeys, layout, row, col, grid) => {
+    const getAvailableCardTypesAndSizes = (cardTypeKeys, layout, row, col, grid, gridColumns, gridRows) => {
     let availableOptions = [];
     const usedCardTypes = layout.map(item => item.cardType);
 
     cardTypeKeys.forEach(cardType => {
         if (!usedCardTypes.includes(cardType)) {
             cardTypes[cardType].forEach(size => {
-                if (isValidPosition(size, { columnStart: col, rowStart: row }, layout, grid)) {
+                if (isValidPosition(size, { columnStart: col, rowStart: row }, layout, grid, gridColumns, gridRows)) {
                     availableOptions.push({ cardType, size });
                 }
             });
@@ -95,7 +92,7 @@
     };
 
     // Updated function to check if the position is valid for the given size
-    const isValidPosition = (size, position, currentLayout, grid) => {
+    const isValidPosition = (size, position, currentLayout, grid, gridColumns, gridRows) => {
         const columnEnd = position.columnStart + size.columns - 1;
         const rowEnd = position.rowStart + size.rows - 1;
 
@@ -121,8 +118,8 @@
 
 
     // Function to generate layout components based on the random layout
-    export const generateLayoutComponents = () => {
-        let layoutConfigurations = generateRandomLayout();
+    export const generateLayoutComponents = (gridColumns, gridRows) => {
+        let layoutConfigurations = generateRandomLayout(gridColumns, gridRows);
     
         return layoutConfigurations.map((config, index) => {
             const cardClasses = `card ${config.size.columns}-columns ${config.size.rows}-rows`;

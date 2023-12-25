@@ -20,6 +20,8 @@ $bigger-font-weight: 300;
 $standard-font-colour: #999;
 $important-font-colour: #e0e0e0;
 
+$min-card-width: 200px; // Adjust this value as needed
+
 @font-face {
   font-family: 'Quicksand';
   src: url('../assets/fonts/Quicksand-Regular.ttf') format('truetype');
@@ -72,11 +74,6 @@ $important-font-colour: #e0e0e0;
   
   ::-webkit-scrollbar-thumb:hover {
     background-color: $primary-background-color; /* Customize the thumb color on hover */
-  }
-  
-  ::-webkit-scrollbar-track {
-    background-color: transparent; /* Customize the scrollbar track color */
-    border-left: $line-width solid $border-color; // Add a border to the left side of the track
   }
   
   ::-webkit-scrollbar-track-piece {

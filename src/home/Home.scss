@@ -1,28 +1,35 @@
 @import '../utils/GlobalStyles.scss';
 
+
 @keyframes dropIn {
     0% {
         opacity: 0;
         transform: translateY(-100px) scaleY(0.85);
     }
+
     50% {
         opacity: 0.5;
         transform: translateY(15px) scaleY(1.1);
     }
+
     65% {
         transform: translateY(-10px) scaleY(0.95);
     }
+
     80% {
         transform: translateY(5px) scaleY(1.05);
     }
+
     90% {
         transform: translateY(-2px) scaleY(0.98);
     }
+
     100% {
         opacity: 0.6;
         transform: translateY(0) scaleY(1);
     }
 }
+
 @keyframes fadeInAnimation {
     0% {
         opacity: 0;
@@ -38,33 +45,45 @@
     animation-delay: 0.9s;
 }
 
-
 .page-framer {
+    animation: fadeInAnimation ease 1s;
+    animation-delay: 0.9s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 61vw;
+
     height: 100vh;
     display: flex;
     flex-direction: column;
 
-
-    opacity: 0;
-    animation: fadeInAnimation ease 1s;
-    animation-delay: 0.9s;
-    /* Adjust the delay as needed */
-    animation-iteration-count: 1;
-    animation-fill-mode: forwards;
     /* Stack header and main content vertically */
 
     .main-content-framer {
         display: grid;
-        grid-template-columns: repeat(6, 1fr); // Six columns
-        grid-template-rows: repeat(4, 1fr); // Four rows
+        grid-template-columns: repeat(6, 190px); // Six columns
+        grid-template-rows: repeat(4, 190px); // Four rows
 
-        width: 61vw;
-        height: 80vh;
+        width: 100%;
+        max-height: calc(4 * var(--grid-object-height)); // Max height based on 4 rows
+
+        // Media query for intermediate layout
+        @media (max-width: calc(6 * $min-card-width)) {
+            grid-template-columns: repeat(4, 190px); // Intermediate layout: 4 columns
+            grid-template-rows: repeat(6, 190px); // Intermediate layout: 6 rows
+            max-height: calc(6 * var(--grid-object-height)); // Max height based on 6 rows
+        }
+
+        // Media query for final layout
+        @media (max-width: calc(4 * $min-card-width)) {
+            grid-template-columns: repeat(2, 190px); // Final layout: 2 columns
+            grid-template-rows: repeat(12, 190px); // Final layout: 12 rows
+            max-height: calc(12 * var(--grid-object-height)); // Max height based on 12 rows
+
+        }
 
         .card {
             min-width: 0; // Prevents stretching
@@ -77,7 +96,13 @@
             animation-duration: 1.2s; // Slightly longer duration for a more natural feel
             animation-timing-function: ease-in-out; // Smoother transitions
             animation-fill-mode: backwards;
-        }        
+
+            ::-webkit-scrollbar-track {
+                background-color: transparent; /* Customize the scrollbar track color */
+                border-left: $line-width solid $border-color; // Add a border to the left side of the track
+              }
+
+        }
 
         // Adjust card sizes within the main content framer
         .six-columns {
@@ -123,4 +148,3 @@
         // ... Additional sizing classes as needed
     }
 }
-
