@@ -1,8 +1,7 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState, useCallback } from 'react';
 import Header from "../components/header/Header";
 import { generateLayoutComponents } from './LayoutConfigRandom';
 import './Home.scss';
-
 import { useMediaQuery } from 'react-responsive';
 const MIN_CARD_WIDTH = 200;
 
@@ -21,11 +20,15 @@ function Home() {
       gridRows = 6;
   }
 
-  useEffect(() => {
-    refreshLayouts(gridColumns, gridRows);
-  }, [isIntermediateLayout, isFinalLayout,gridRows, gridColumns]);
-
   const [layoutComponents, setLayoutComponents] = useState(generateLayoutComponents(gridColumns, gridRows));
+
+  const refreshLayouts = useCallback(() => {
+    setLayoutComponents(generateLayoutComponents(gridColumns, gridRows));
+  }, [gridColumns, gridRows]);
+
+  useEffect(() => {
+    refreshLayouts();
+  }, [refreshLayouts]);
 
   useEffect(() => {
     // Add initial animation class to all cards
@@ -46,16 +49,12 @@ function Home() {
         });
       };
     });
-  }, [gridColumns, gridRows]); // Use the "layoutComponents" state as a dependency
-
-  const refreshLayouts = (gridColumns, gridRows) => {
-    setLayoutComponents(generateLayoutComponents(gridColumns, gridRows));
-  };
+  }, [gridColumns, gridRows]);
 
   return (
     <div>
       <div className="page-framer" key={layoutComponents}>
-      <Header onRandomizeClick={refreshLayouts} />
+        <Header onRandomizeClick={refreshLayouts} />
         <div className="main-content-framer" ref={containerRef} >
           {layoutComponents.map((LayoutComponent, index) => (
             <LayoutComponent key={index} />
