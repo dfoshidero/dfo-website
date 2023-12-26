@@ -15,15 +15,15 @@ const educations = [
   },
   {
     id: 4,
-    title: "Amazon Web Services (AWS) // Certified Cloud Practitioner",
-    graduation: "Issued Jul 2023",
-    link: "https://www.credly.com/badges/4c769782-1735-4aae-b652-1413a1e65b75/linked_in_profile"
-  },
-  {
-    id: 3,
     title: "Udemy // Complete 2023 Web Development Bootcamp",
     graduation: "Issued Oct 2023",
     link: "https://www.udemy.com/certificate/UC-f3a9d97a-913d-453e-b471-ed31b2479a4e/"
+  },
+  {
+    id: 3,
+    title: "Amazon Web Services (AWS) // Certified Cloud Practitioner",
+    graduation: "Issued Jul 2023",
+    link: "https://www.credly.com/badges/4c769782-1735-4aae-b652-1413a1e65b75/linked_in_profile"
   },
   {
     id: 2,
