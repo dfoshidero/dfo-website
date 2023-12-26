@@ -1,14 +1,17 @@
 import React from 'react';
 import './Status.scss';
 
-function StatusCard() {
-  // Projects page content
+const StatusCard = () => {
   return (
-    <div className="about-content">
-      <p>This will be my current employment status.
-      </p>
+    <div className="status-card">
+      <div className="status-text" style={{ backgroundColor: "white" }}>
+      Pursuing a Master's degree at the University of Bath.
+      </div>
+      <div className="status-text" style={{ backgroundColor: "white" }}>
+        Currently looking for work.
+      </div>
     </div>
   );
-}
+};
 
 export default StatusCard;

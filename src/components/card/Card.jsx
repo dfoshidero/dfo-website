@@ -40,7 +40,13 @@ function Card({ title, extra, children, onClick, className, style }) {
     <div className={cardClasses} onClick={onClick} style={style}>
       <div className="card-header">
         <h2 className="title">{title}</h2>
-        <div className="extra">{extra}</div>
+        <div className="extra">
+          {typeof extra === 'string' ? (
+            <span>{extra}</span>
+          ) : (
+            <div>{extra}</div>
+          )}
+        </div>
       </div>
       <div className='content' ref={contentRef}>
         {children}

@@ -20,7 +20,7 @@ const Header = ({ onRandomizeClick }) => {
         </div>
       </div>
       
-      <div className="left-container">
+      <div className="right-container">
         <button onClick={onRandomizeClick} className="shuffle-layout-button">
           <span className="button-text">Shuffle Cards</span>
           <AutorenewIcon fontSize="inherit" className="button-icon" />

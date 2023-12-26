@@ -4,6 +4,7 @@ import { generateLayoutComponents } from './LayoutConfigRandom';
 import './Home.scss';
 import { useMediaQuery } from 'react-responsive';
 import ScrollIndicator from '../components/scrollIndicator/scrollIndicator';
+import Footer from '../components/footer/Footer';
 
 const MIN_CARD_WIDTH = 200;
 
@@ -73,6 +74,7 @@ function Home() {
             <LayoutComponent key={index} />
           ))}
         </div>
+        <Footer />
       </div>
     </div>
   );

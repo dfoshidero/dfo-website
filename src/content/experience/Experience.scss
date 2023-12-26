@@ -27,7 +27,7 @@
     &:hover {
         background-color: $tertiary-background-color;
         margin: 0; /* Remove margins */
-        padding: 4px 0px 10px 10px; /* Adjust padding */
+        padding: 4px 10px 10px 10px; /* Adjust padding */
         border-bottom: 0px solid $border-color;
 
         .experience-title,

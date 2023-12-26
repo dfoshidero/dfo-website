@@ -1,0 +1,52 @@
+@import "../../utils/GlobalStyles.scss";
+
+.footer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin: 14px 7px;
+  border-top: $line-width solid $border-color;
+
+  @media (max-width: calc(4 * $min-card-width)) {
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    margin: 14px auto;
+    padding-top: 10%;
+    padding-bottom: 5%;
+    padding-left: 14%;
+    padding-right: 14%;
+  }
+
+  .bold {
+    font-weight: bold
+  }
+
+  .design-info {
+    color: $border-color;
+  width: 10%;
+  font-size: $smaller-font-size;
+  margin: 10px;
+
+    a.link {
+      color: blue; // Hyperlink color
+      text-decoration: underline; // Underline to denote it's clickable
+      cursor: pointer; // Cursor changes to pointer on hover
+
+      &:hover {
+        color: darkblue; // Darker color on hover for visual feedback
+        text-decoration: none; // Optional: removes underline on hover for a different effect
+      }
+
+      &:focus,
+      &:active {
+        outline: none; // Removes the default focus outline
+        color: purple; // Color change to indicate active/focus state
+      }
+    }
+  }
+}
+
+// Rest of the styles similar to .header styles in header.scss
+// Ensure you also adjust the media queries and other specific styles as needed.

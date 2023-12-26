@@ -8,6 +8,8 @@
     import StatusCard from '../content/status/Status';
     import PortfolioCard from '../content/portfolio/Portfolio';
     import ContactCard from '../content/contact/Contact';
+
+import StatusCircle from '../content/status/StatusCircle';
     
     // Define the possible sizes for each card type
     const cardTypes = {
@@ -154,11 +156,29 @@ const isValidPosition = (size, position, currentLayout, grid, gridColumns, gridR
             const cardClasses = `card ${config.size.columns}-columns ${config.size.rows}-rows`;
             // Define a delay based on the card's index
             const animationDelay = index * 0.1; // Adjust the multiplier to control the speed
+
+            let extraContent;
+
+        switch (config.cardType) {
+            case 'TIMEZONE':
+                extraContent = "Midlands, UK";
+                break;
+            case 'STATUS':
+                //lightgreen
+                //orange
+                //red
+                extraContent = <StatusCircle color="lightgreen"/>;
+                break;
+            default:
+                extraContent = null;
+        }
+        
     
             return () => (
                 <Card
                     key={index} // Add a unique key for each card
                     title={config.cardType.toUpperCase()}
+                    extra={extraContent}
                     className={cardClasses}
                     style={{
                         gridColumn: `span ${config.size.columns}`,

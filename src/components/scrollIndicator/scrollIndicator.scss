@@ -7,7 +7,7 @@
     width: 100%;
     height: 100%;
     z-index: 1000;
-    animation: bounce 4s ease-out, fadeOut 3s forwards;
+    animation: bounce 3s ease-out, fadeOut 3s forwards;
     pointer-events: none; // Prevents blocking clicks
 
     &:before {
