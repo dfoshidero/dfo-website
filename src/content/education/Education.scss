@@ -36,3 +36,52 @@
         padding-top: 4px; // Space between title and short description 
     }
 }
+
+
+.certification-button {
+    background-color: $secondary-background-color;
+    color: $primary-text-color;
+    border: $line-width solid $border-color;
+    border-radius: 14px;
+    padding: 3px 0px;
+    margin: 3% 0px 0px 0px;
+    font-size: $standard-font-size;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s, opacity 0.3s;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    opacity: 0.6;
+    text-wrap: nowrap;
+    width: 100px;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &:hover {
+        background-color: $tertiary-background-color;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
+        opacity: 1;
+        text-decoration: none;
+    }
+
+    a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        color: inherit; // Ensure link color matches the button text color
+
+        .button-content {
+            display: flex;
+            align-items: center;
+        }
+
+        .button-icon {
+            margin-left: 4px;
+        }
+    }
+}
+
+.MuiSvgIcon-root {
+    font-size: $standard-font-size * 1.1 !important; // The !important is to override MUI default styles if necessary
+  }
