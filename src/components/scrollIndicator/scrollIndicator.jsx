@@ -1,27 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
-import './scrollIndicator.scss'; // Path to your ScrollIndicator.scss
+import './scrollIndicator.scss';
 
-const ScrollIndicator = () => {
-  const [visible, setVisible] = useState(true);
-
-  useEffect(() => {
-    const timeoutId = setTimeout(() => setVisible(false), 1000);
-
-    const handleScroll = () => setVisible(false);
-    window.addEventListener('scroll', handleScroll);
-
-    return () => {
-      clearTimeout(timeoutId);
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
-
-  return visible ? (
-    <div className="scroll-indicator">
-      <ArrowDownwardIcon className="scroll-indicator-icon" />
+const ScrollIndicator = ({ visible }) => {
+  return (
+    <div className={`scroll-indicator ${visible ? 'visible' : ''}`}>
+      <ArrowDownwardIcon className="indicator"/>
     </div>
-  ) : null;
+  );
 };
 
 export default ScrollIndicator;

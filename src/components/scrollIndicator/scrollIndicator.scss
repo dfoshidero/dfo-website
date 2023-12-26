@@ -1,25 +1,61 @@
 .scroll-indicator {
-    display: flex;
+    display: none; // Default to not displaying on larger screens
     justify-content: center;
+    align-items: center;
     position: fixed;
     top: 10px;
     width: 100%;
+    height: 100%;
     z-index: 1000;
-    animation: bounce 1s infinite;
-  
-    .scroll-indicator-icon {
-      font-size: 2rem; // Adjust the icon size as needed
+    animation: bounce 4s ease-out, fadeOut 3s forwards;
+    pointer-events: none; // Prevents blocking clicks
+
+    &:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: -1;
     }
-  }
-  
-  @keyframes bounce {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
-  }
-  
-  @media (max-width: 768px) { // Mobile devices only
-    .scroll-indicator {
-      display: flex;
+
+    .indicator {
+        width: 25%;
+        height: 25%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative; // Ensures it's above the blurred background
     }
-  }
   
+    @keyframes bounce {
+        0%, 20%, 40%, 60%, 80%, 100% { 
+            transform: translateY(0); 
+            filter: brightness(150%) blur(6px); // Less blur at start and end
+            opacity: 0.7;
+        }
+        10%, 30%, 50%, 70%, 90% { 
+            transform: translateY(-30px); 
+            filter: brightness(150%) blur(0px); // More blur at the peak of the bounce
+            opacity: 0;
+        }
+    }
+
+    @keyframes fadeOut {
+        0% {
+            opacity: 1;
+        }
+        90% {
+            opacity: 1;
+        }
+        100% {
+            opacity: 0;
+        }
+    }
+
+    // Media query for mobile devices
+    @media screen and (max-width: 768px) { // Adjust the max-width as needed for targeting mobile devices
+        display: flex;
+    }
+}
