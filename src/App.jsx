@@ -12,22 +12,29 @@ import Projects from "./content/projects/Projects";
 import Portfolio from "./content/portfolio/Portfolio";
 import Contact from "./content/contact/Contact";
 
+import ScrollIndicator from './components/scrollIndicator/scrollIndicator'; // Adjust the path as needed
+
 function App() {
   return (
-    <ModalProvider>
-      <Router>
-        <Routes>
-          <Route path="/" element={<Enter />} />
-          <Route path="/home" element={<Home />} />
-          <Route path="/experience" element={<Experience />} />
-          <Route path="/projects" element={<Projects />} />
-          <Route path="/portfolio" element={<Portfolio />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="*" element={<Navigate to="/" replace />} />
-        </Routes>
-      </Router>
-      <Modal />
-    </ModalProvider>
+    <div>
+      <ScrollIndicator />
+
+
+      <ModalProvider>
+        <Router>
+          <Routes>
+            <Route path="/" element={<Enter />} />
+            <Route path="/home" element={<Home />} />
+            <Route path="/experience" element={<Experience />} />
+            <Route path="/projects" element={<Projects />} />
+            <Route path="/portfolio" element={<Portfolio />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="*" element={<Navigate to="/" replace />} />
+          </Routes>
+        </Router>
+        <Modal />
+      </ModalProvider>
+    </div>
   );
 }
 

@@ -1,0 +1,25 @@
+.scroll-indicator {
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    top: 10px;
+    width: 100%;
+    z-index: 1000;
+    animation: bounce 1s infinite;
+  
+    .scroll-indicator-icon {
+      font-size: 2rem; // Adjust the icon size as needed
+    }
+  }
+  
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+  
+  @media (max-width: 768px) { // Mobile devices only
+    .scroll-indicator {
+      display: flex;
+    }
+  }
+  

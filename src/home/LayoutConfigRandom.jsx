@@ -1,4 +1,4 @@
-    // layoutConfig.js
+    // LayoutConfigRandom.js
     import React from 'react';
     import Card from '../components/card/Card';
     import ExperienceCard from "../content/experience/Experience";
@@ -22,46 +22,63 @@
         'EXPERTISE': [{ columns: 1, rows: 2 }, { columns: 1, rows: 1 }], // Will include skills and certifications. CERTIFIED SKILLS go first.
     };
     
-    // Function to generate a random layout
-    // Function to generate a random layout
-    const generateRandomLayout = (gridColumns, gridRows) => {
-        const cardTypeKeys = Object.keys(cardTypes);
-        let layout, grid, attempt, allCardTypesUsed;
-    
-        do {
-            layout = [];
-            grid = Array(gridRows).fill().map(() => Array(gridColumns).fill(false));
-            attempt = true;
-            allCardTypesUsed = true;
-    
-            for (let row = 1; row <= gridRows && attempt; row++) {
-                for (let col = 1; col <= gridColumns && attempt; col++) {
-                    if (!grid[row - 1][col - 1]) {
-                        const availableOptions = getAvailableCardTypesAndSizes(cardTypeKeys, layout, row, col, grid, gridColumns, gridRows);
-                        if (availableOptions.length === 0) {
-                            attempt = false;
-                            allCardTypesUsed = false;
-                        } else {
-                            const { cardType, size } = selectRandomElement(availableOptions);
-                            const position = { columnStart: col, rowStart: row };
-    
-                            layout.push({ cardType, size, position });
-                            updateGrid(grid, position, size);
-                        }
+// Function to check if the layout has at least two cards from [TIMEZONE, STATUS, CONNECT] in the first three rows for mobile layout
+const isValidSpecialCardsPlacement = (layout) => {
+    const specialCardTypes = ['TIMEZONE', 'STATUS', 'CONNECT'];
+    let count = 0;
+
+    layout.forEach(item => {
+        if (specialCardTypes.includes(item.cardType) && item.position.rowStart <= 3) {
+            count++;
+        }
+    });
+
+    return count >= 1;
+};
+
+// Function to generate a random layout
+const generateRandomLayout = (gridColumns, gridRows) => {
+    const cardTypeKeys = Object.keys(cardTypes);
+    let layout, grid, attempt, allCardTypesUsed, layoutValid;
+
+    do {
+        layout = [];
+        grid = Array(gridRows).fill().map(() => Array(gridColumns).fill(false));
+        attempt = true;
+        allCardTypesUsed = true;
+
+        for (let row = 1; row <= gridRows && attempt; row++) {
+            for (let col = 1; col <= gridColumns && attempt; col++) {
+                if (!grid[row - 1][col - 1]) {
+                    const availableOptions = getAvailableCardTypesAndSizes(cardTypeKeys, layout, row, col, grid, gridColumns, gridRows);
+                    if (availableOptions.length === 0) {
+                        attempt = false;
+                        allCardTypesUsed = false;
+                    } else {
+                        const { cardType, size } = selectRandomElement(availableOptions);
+                        const position = { columnStart: col, rowStart: row };
+
+                        layout.push({ cardType, size, position });
+                        updateGrid(grid, position, size);
                     }
                 }
             }
-    
-            // Check if all card types have been used
-            if (allCardTypesUsed) {
-                const usedCardTypes = layout.map(item => item.cardType);
-                allCardTypesUsed = cardTypeKeys.every(cardType => usedCardTypes.includes(cardType));
-            }
-        } while (!allCardTypesUsed);
-    
-        return layout;
-    };
-    
+        }
+
+        // Check if all card types have been used
+        if (allCardTypesUsed) {
+            const usedCardTypes = layout.map(item => item.cardType);
+            allCardTypesUsed = cardTypeKeys.every(cardType => usedCardTypes.includes(cardType));
+        }
+
+        // Additional check for special card placement if gridRows === 12
+        layoutValid = gridRows !== 12 || isValidSpecialCardsPlacement(layout);
+
+    } while (!allCardTypesUsed || !layoutValid);
+
+    return layout;
+};
+
 
     // Function to get available card types that can fit in the current position
     const getAvailableCardTypesAndSizes = (cardTypeKeys, layout, row, col, grid, gridColumns, gridRows) => {
@@ -71,6 +88,11 @@
     cardTypeKeys.forEach(cardType => {
         if (!usedCardTypes.includes(cardType)) {
             cardTypes[cardType].forEach(size => {
+                // Exclude specific card sizes when gridRows is 12
+                if (gridRows === 12 && ((cardType === 'EDUCATION' && size.columns === 2 && size.rows === 2) || (cardType === 'STATUS' && size.columns === 2 && size.rows === 1))) {
+                    return;
+                }
+
                 if (isValidPosition(size, { columnStart: col, rowStart: row }, layout, grid, gridColumns, gridRows)) {
                     availableOptions.push({ cardType, size });
                 }
@@ -80,6 +102,7 @@
 
     return availableOptions;
 };
+
 
 
     // Function to update the grid marking the occupied cells
@@ -92,24 +115,30 @@
     };
 
     // Updated function to check if the position is valid for the given size
-    const isValidPosition = (size, position, currentLayout, grid, gridColumns, gridRows) => {
-        const columnEnd = position.columnStart + size.columns - 1;
-        const rowEnd = position.rowStart + size.rows - 1;
+const isValidPosition = (size, position, currentLayout, grid, gridColumns, gridRows) => {
+    const columnEnd = position.columnStart + size.columns - 1;
+    const rowEnd = position.rowStart + size.rows - 1;
 
-        if (columnEnd > gridColumns || rowEnd > gridRows) {
-            return false;
-        }
+    // Check if a 2x2 card is being placed in the first row when gridRows is 12
+    if (gridRows === 12 && size.columns === 2 && size.rows === 2 && position.rowStart === 1) {
+        return false;
+    }
 
-        for (let r = position.rowStart; r <= rowEnd; r++) {
-            for (let c = position.columnStart; c <= columnEnd; c++) {
-                if (grid[r - 1][c - 1]) { // Check if the cell is already occupied
-                    return false;
-                }
+    if (columnEnd > gridColumns || rowEnd > gridRows) {
+        return false;
+    }
+
+    for (let r = position.rowStart; r <= rowEnd; r++) {
+        for (let c = position.columnStart; c <= columnEnd; c++) {
+            if (grid[r - 1][c - 1]) { // Check if the cell is already occupied
+                return false;
             }
         }
+    }
 
-        return true;
-    };
+    return true;
+};
+
 
     // Function to select a random element from an array
     const selectRandomElement = (array) => {
