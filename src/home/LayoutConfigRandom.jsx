@@ -9,6 +9,7 @@ import StatusCard from '../content/status/Status';
 import PortfolioCard from '../content/portfolio/Portfolio';
 import ContactCard from '../content/contact/Contact';
 import RecommendationCard from '../content/recommendations/Recommendation';
+import SkillsCard from '../content/expertise/Skills';
 
 import StatusCircle from '../content/status/StatusCircle';
 import SeeMore from '../components/seemore-button/SeeMore';
@@ -23,7 +24,7 @@ const cardTypes = {
     'EDUCATION': [{ columns: 2, rows: 1 }, { columns: 1, rows: 2 }, { columns: 2, rows: 2 }],
     'RECOMMENDATIONS': [{ columns: 2, rows: 1 }],
     'STATUS': [{ columns: 2, rows: 1 }, { columns: 1, rows: 1 }],
-    'EXPERTISE': [{ columns: 1, rows: 2 }, { columns: 1, rows: 1 }], // Will include skills and certifications. CERTIFIED SKILLS go first.
+    'TECHNICAL SKILLS': [{ columns: 1, rows: 2 }, { columns: 1, rows: 1 }], // Will include skills and certifications. CERTIFIED SKILLS go first.
 };
 
 // Function to check if the layout has at least two cards from [TIMEZONE, STATUS, CONNECT] in the first three rows for mobile layout
@@ -204,6 +205,8 @@ export const generateLayoutComponents = (gridColumns, gridRows) => {
                 {config.cardType === 'MY WORK(S)' && <PortfolioCard />}
                 {config.cardType === 'CONNECT' && <ContactCard />}
                 {config.cardType === 'RECOMMENDATIONS' && <RecommendationCard />}
+                {config.cardType === 'TECHNICAL SKILLS' && <SkillsCard />}
+
             </Card>
         );
     });
