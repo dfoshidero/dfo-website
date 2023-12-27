@@ -19,6 +19,13 @@
   max-height: 100%;
   max-width: 100%;
 
+  @media (max-width: calc(4 * $min-card-width)) {
+    margin: 5px;
+    box-shadow: 2px 2px 3px rgba(0, 0, 0);
+
+}
+
+  
 
   &:hover {
     transform: translateY(-3px);
@@ -32,27 +39,28 @@
     justify-content: space-between; // Space out children to the far ends
     border-bottom: $line-width solid #545454;
     margin: 0px 10px;
-    
-    .title, .extra {
+
+    .title,
+    .extra {
       margin: 4px 0px;
       font-size: $standard-font-size;
-      white-space: nowrap; 
+      white-space: nowrap;
     }
 
     .title {
       flex-grow: 1;
-        color: $important-font-colour;
-        font-weight: $bigger-font-weight;
+      color: $important-font-colour;
+      font-weight: $bigger-font-weight;
     }
 
     .extra {
-        color: $standard-font-colour;
-        font-weight: $standard-font-weight;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+      color: $standard-font-colour;
+      font-weight: $standard-font-weight;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
-}
+  }
 
 
   .content {
