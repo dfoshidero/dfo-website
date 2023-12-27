@@ -79,8 +79,8 @@
 
         // Media query for final layout
         @media (max-width: calc(4 * $min-card-width)) {
-            grid-template-columns: repeat(2, 250px); // Final layout: 2 columns
-            grid-template-rows: repeat(12, 250px); // Final layout: 12 rows
+            grid-template-columns: repeat(2, 210px); // Final layout: 2 columns
+            grid-template-rows: repeat(12, 210px); // Final layout: 12 rows
             max-height: calc(12 * var(--grid-object-height)); // Max height based on 12 rows
 
         }
