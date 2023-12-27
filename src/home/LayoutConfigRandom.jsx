@@ -1,30 +1,31 @@
-    // LayoutConfigRandom.js
-    import React from 'react';
-    import Card from '../components/card/Card';
-    import ExperienceCard from "../content/experience/Experience";
-    import EducationCard from '../content/education/Education';
-    import AnalogClock from '../content/time/analog/AnalogClock';
-    import ProjectCard from '../content/projects/Projects';
-    import StatusCard from '../content/status/Status';
-    import PortfolioCard from '../content/portfolio/Portfolio';
-    import ContactCard from '../content/contact/Contact';
-    import RecommendationCard from '../content/recommendations/Recommendation';
+// LayoutConfigRandom.js
+import React from 'react';
+import Card from '../components/card/Card';
+import ExperienceCard from "../content/experience/Experience";
+import EducationCard from '../content/education/Education';
+import AnalogClock from '../content/time/analog/AnalogClock';
+import ProjectCard from '../content/projects/Projects';
+import StatusCard from '../content/status/Status';
+import PortfolioCard from '../content/portfolio/Portfolio';
+import ContactCard from '../content/contact/Contact';
+import RecommendationCard from '../content/recommendations/Recommendation';
 
 import StatusCircle from '../content/status/StatusCircle';
-    
-    // Define the possible sizes for each card type
-    const cardTypes = {
-        'EXPERIENCE': [{ columns: 2, rows: 3 }, { columns: 2, rows: 2 }], // Now an array of sizes
-        'TIMEZONE': [{ columns: 1, rows: 1 }],
-        'CONNECT': [{ columns: 1, rows: 1 }],
-        'PROJECTS': [{ columns: 2, rows: 2 }, { columns: 2, rows: 3 }],
-        'MY WORK(S)': [{ columns: 2, rows: 2 }],
-        'EDUCATION': [{ columns: 2, rows: 1 }, { columns: 1, rows: 2 }, { columns: 2, rows: 2 }],
-        'RECOMMENDATIONS': [{ columns: 2, rows: 1 }],
-        'STATUS': [{ columns: 2, rows: 1 }, { columns: 1, rows: 1 }],
-        'EXPERTISE': [{ columns: 1, rows: 2 }, { columns: 1, rows: 1 }], // Will include skills and certifications. CERTIFIED SKILLS go first.
-    };
-    
+import SeeMore from '../components/seemore-button/SeeMore';
+
+// Define the possible sizes for each card type
+const cardTypes = {
+    'EXPERIENCE': [{ columns: 2, rows: 3 }, { columns: 2, rows: 2 }], // Now an array of sizes
+    'TIMEZONE': [{ columns: 1, rows: 1 }],
+    'CONNECT': [{ columns: 1, rows: 1 }],
+    'PROJECTS': [{ columns: 2, rows: 2 }, { columns: 2, rows: 3 }],
+    'MY WORK(S)': [{ columns: 2, rows: 2 }],
+    'EDUCATION': [{ columns: 2, rows: 1 }, { columns: 1, rows: 2 }, { columns: 2, rows: 2 }],
+    'RECOMMENDATIONS': [{ columns: 2, rows: 1 }],
+    'STATUS': [{ columns: 2, rows: 1 }, { columns: 1, rows: 1 }],
+    'EXPERTISE': [{ columns: 1, rows: 2 }, { columns: 1, rows: 1 }], // Will include skills and certifications. CERTIFIED SKILLS go first.
+};
+
 // Function to check if the layout has at least two cards from [TIMEZONE, STATUS, CONNECT] in the first three rows for mobile layout
 const isValidSpecialCardsPlacement = (layout) => {
     const specialCardTypes = ['TIMEZONE', 'STATUS', 'CONNECT'];
@@ -83,8 +84,8 @@ const generateRandomLayout = (gridColumns, gridRows) => {
 };
 
 
-    // Function to get available card types that can fit in the current position
-    const getAvailableCardTypesAndSizes = (cardTypeKeys, layout, row, col, grid, gridColumns, gridRows) => {
+// Function to get available card types that can fit in the current position
+const getAvailableCardTypesAndSizes = (cardTypeKeys, layout, row, col, grid, gridColumns, gridRows) => {
     let availableOptions = [];
     const usedCardTypes = layout.map(item => item.cardType);
 
@@ -108,16 +109,16 @@ const generateRandomLayout = (gridColumns, gridRows) => {
 
 
 
-    // Function to update the grid marking the occupied cells
-    const updateGrid = (grid, position, size) => {
-        for (let row = position.rowStart; row < position.rowStart + size.rows; row++) {
-            for (let col = position.columnStart; col < position.columnStart + size.columns; col++) {
-                grid[row - 1][col - 1] = true;
-            }
+// Function to update the grid marking the occupied cells
+const updateGrid = (grid, position, size) => {
+    for (let row = position.rowStart; row < position.rowStart + size.rows; row++) {
+        for (let col = position.columnStart; col < position.columnStart + size.columns; col++) {
+            grid[row - 1][col - 1] = true;
         }
-    };
+    }
+};
 
-    // Updated function to check if the position is valid for the given size
+// Updated function to check if the position is valid for the given size
 const isValidPosition = (size, position, currentLayout, grid, gridColumns, gridRows) => {
     const columnEnd = position.columnStart + size.columns - 1;
     const rowEnd = position.rowStart + size.rows - 1;
@@ -143,22 +144,22 @@ const isValidPosition = (size, position, currentLayout, grid, gridColumns, gridR
 };
 
 
-    // Function to select a random element from an array
-    const selectRandomElement = (array) => {
-        return array[Math.floor(Math.random() * array.length)];
-    };
+// Function to select a random element from an array
+const selectRandomElement = (array) => {
+    return array[Math.floor(Math.random() * array.length)];
+};
 
 
-    // Function to generate layout components based on the random layout
-    export const generateLayoutComponents = (gridColumns, gridRows) => {
-        let layoutConfigurations = generateRandomLayout(gridColumns, gridRows);
-    
-        return layoutConfigurations.map((config, index) => {
-            const cardClasses = `card ${config.size.columns}-columns ${config.size.rows}-rows`;
-            // Define a delay based on the card's index
-            const animationDelay = index * 0.1; // Adjust the multiplier to control the speed
+// Function to generate layout components based on the random layout
+export const generateLayoutComponents = (gridColumns, gridRows) => {
+    let layoutConfigurations = generateRandomLayout(gridColumns, gridRows);
 
-            let extraContent;
+    return layoutConfigurations.map((config, index) => {
+        const cardClasses = `card ${config.size.columns}-columns ${config.size.rows}-rows`;
+        // Define a delay based on the card's index
+        const animationDelay = index * 0.1; // Adjust the multiplier to control the speed
+
+        let extraContent;
 
         switch (config.cardType) {
             case 'TIMEZONE':
@@ -168,38 +169,42 @@ const isValidPosition = (size, position, currentLayout, grid, gridColumns, gridR
                 //lightgreen
                 //orange
                 //red
-                extraContent = <StatusCircle color="lightgreen"/>;
+                extraContent = <StatusCircle color="lightgreen" />;
+                break;
+            case 'RECOMMENDATIONS':
+                extraContent = <SeeMore url="https://www.linkedin.com/in/favourdo/details/recommendations/?detailScreenTabIndex=0" text="READ MORE" />
                 break;
             case 'PROJECTS':
+                extraContent = <SeeMore url="https://github.com/dfoshidero?tab=repositories" text="VIEW REPOSITORIES" />
                 break;
             default:
                 extraContent = null;
         }
-        
-    
-            return () => (
-                <Card
-                    key={index} // Add a unique key for each card
-                    title={config.cardType.toUpperCase()}
-                    extra={extraContent}
-                    className={cardClasses}
-                    style={{
-                        gridColumn: `span ${config.size.columns}`,
-                        gridRow: `span ${config.size.rows}`,
-                        // Apply the animation delay
-                        animationDelay: `${animationDelay}s`,
-                    }}
-                >
-                    {/* Render card content based on cardType */}
-                    {config.cardType === 'EXPERIENCE' && <ExperienceCard />}
-                    {config.cardType === 'EDUCATION' && <EducationCard />}
-                    {config.cardType === 'TIMEZONE' && <AnalogClock />}
-                    {config.cardType === 'PROJECTS' && <ProjectCard />}
-                    {config.cardType === 'STATUS' && <StatusCard />}
-                    {config.cardType === 'MY WORK(S)' && <PortfolioCard />}
-                    {config.cardType === 'CONNECT' && <ContactCard />}
-                    {config.cardType === 'RECOMMENDATIONS' && <RecommendationCard />}
-                </Card>
-            );
-        });
-    };
+
+
+        return () => (
+            <Card
+                key={index} // Add a unique key for each card
+                title={config.cardType.toUpperCase()}
+                extra={extraContent}
+                className={cardClasses}
+                style={{
+                    gridColumn: `span ${config.size.columns}`,
+                    gridRow: `span ${config.size.rows}`,
+                    // Apply the animation delay
+                    animationDelay: `${animationDelay}s`,
+                }}
+            >
+                {/* Render card content based on cardType */}
+                {config.cardType === 'EXPERIENCE' && <ExperienceCard />}
+                {config.cardType === 'EDUCATION' && <EducationCard />}
+                {config.cardType === 'TIMEZONE' && <AnalogClock />}
+                {config.cardType === 'PROJECTS' && <ProjectCard />}
+                {config.cardType === 'STATUS' && <StatusCard />}
+                {config.cardType === 'MY WORK(S)' && <PortfolioCard />}
+                {config.cardType === 'CONNECT' && <ContactCard />}
+                {config.cardType === 'RECOMMENDATIONS' && <RecommendationCard />}
+            </Card>
+        );
+    });
+};
