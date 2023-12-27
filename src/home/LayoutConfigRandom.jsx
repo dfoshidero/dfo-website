@@ -8,6 +8,7 @@
     import StatusCard from '../content/status/Status';
     import PortfolioCard from '../content/portfolio/Portfolio';
     import ContactCard from '../content/contact/Contact';
+    import RecommendationCard from '../content/recommendations/Recommendation';
 
 import StatusCircle from '../content/status/StatusCircle';
     
@@ -169,6 +170,8 @@ const isValidPosition = (size, position, currentLayout, grid, gridColumns, gridR
                 //red
                 extraContent = <StatusCircle color="lightgreen"/>;
                 break;
+            case 'PROJECTS':
+                break;
             default:
                 extraContent = null;
         }
@@ -195,6 +198,7 @@ const isValidPosition = (size, position, currentLayout, grid, gridColumns, gridR
                     {config.cardType === 'STATUS' && <StatusCard />}
                     {config.cardType === 'MY WORK(S)' && <PortfolioCard />}
                     {config.cardType === 'CONNECT' && <ContactCard />}
+                    {config.cardType === 'RECOMMENDATIONS' && <RecommendationCard />}
                 </Card>
             );
         });
