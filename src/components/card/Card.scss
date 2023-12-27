@@ -14,7 +14,7 @@
   margin: 9px;
   opacity: 0.6;
 
-  box-shadow: 5px 5px 3px rgba(0, 0, 0);
+  box-shadow: 3px 3px 3px rgba(0, 0, 0);
 
   max-height: 100%;
   max-width: 100%;
@@ -22,7 +22,6 @@
   @media (max-width: calc(4 * $min-card-width)) {
     margin: 5px;
     box-shadow: 2px 2px 3px rgba(0, 0, 0);
-
 }
 
   
