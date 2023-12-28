@@ -178,6 +178,20 @@ export const generateLayoutComponents = (gridColumns, gridRows) => {
             case 'PROJECTS':
                 extraContent = <SeeMore url="https://github.com/dfoshidero?tab=repositories" text="VIEW REPOSITORIES" />
                 break;
+            case 'MY WORK(S)':
+                extraContent = (
+                    <div style={{ display: 'flex', flexDirection: 'row' }}>
+                        <SeeMore
+                            url="https://www.instagram.com/untitled.fvr/"
+                            text="TRADITIONAL"
+                            style={{ marginRight: '10px' }} // Optional margin between components
+                        /> ||
+                        <SeeMore
+                            url="https://www.instagram.com/_farchived/"
+                            text="DIGITAL"
+                        />
+                    </div>
+                );                break;
             default:
                 extraContent = null;
         }
