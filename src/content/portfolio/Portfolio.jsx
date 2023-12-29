@@ -7,7 +7,6 @@ import './Portfolio.scss';
 function PortfolioCard() {
   const { openModal } = useContext(ModalContext);
   const [images, setImages] = useState([]);
-  const [selectedImage, setSelectedImage] = useState(null); // New state variable to track the selected image
 
   const accessTokens = [
     process.env.REACT_APP_INSTAGRAM_ACCESS_TOKEN_UNTITLEDFVR,
@@ -73,7 +72,6 @@ function PortfolioCard() {
               key={image.id}
               className={`portfolio-item ${index % 3 === 0 ? 'left' : index % 3 === 2 ? 'right' : ''}`}
               onClick={() => {
-                setSelectedImage(image); // Set the selected image when clicked
                 openModal(
                   <div className="portfolio-modal-content">
                     <img src={image.media_url} alt={image.caption} style={{ opacity: 1 }}
