@@ -22,6 +22,12 @@ jobs:
       env:
         REACT_APP_INSTAGRAM_ACCESS_TOKEN_UNTITLEDFVR: ${{ secrets.REACT_APP_INSTAGRAM_ACCESS_TOKEN_UNTITLEDFVR }}
         REACT_APP_INSTAGRAM_ACCESS_TOKEN_FARCHIVED: ${{ secrets.REACT_APP_INSTAGRAM_ACCESS_TOKEN_FARCHIVED }}
+        
+    - name: Check Environment Variables
+      run: |
+        echo "Token 1: $REACT_APP_INSTAGRAM_ACCESS_TOKEN_UNTITLEDFVR"
+        echo "Token 2: $REACT_APP_INSTAGRAM_ACCESS_TOKEN_FARCHIVED"
+
 
     - name: Deploy to GitHub Pages
       uses: JamesIves/github-pages-deploy-action@v4.5.0
