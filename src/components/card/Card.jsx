@@ -6,6 +6,10 @@ function Card({ title, extra, children, onClick, className, style }) {
 
   useEffect(() => {
     const handleScroll = () => {
+      if (!contentRef.current) {
+        return; // Exit the function if contentRef.current is null
+      }
+      
       const { scrollTop, scrollHeight, clientHeight } = contentRef.current;
       let maskImage;
 
