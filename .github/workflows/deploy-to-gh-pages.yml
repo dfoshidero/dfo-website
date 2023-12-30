@@ -34,7 +34,7 @@ jobs:
         if [ -z "${{ secrets.REACT_APP_INSTAGRAM_ACCESS_TOKEN_FARCHIVED }}" ]; then
           echo "Token 2 is missing"
         else
-          echo "Token 2 is set"
+          echo "Token 2 is set!"
         fi
 
 
