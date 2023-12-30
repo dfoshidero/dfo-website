@@ -1,5 +1,160 @@
 @import '../../utils/GlobalStyles.scss';
 
+.experience-modal-content {
+    display: flex;
+    flex-direction: row;
+    width: 800px;
+    height: 60vh;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+    border: $line-width solid $border-color;
+    border-radius: 10px;
+    color: $border-color; // Ensure text color is readable
+
+    @media (max-width: calc(4 * $min-card-width)) {
+        flex-direction: column;
+        width: 350px;
+    }
+
+    .experience-list-modal {
+        flex-basis: 30%;
+        border-right: 1px solid $border-color;
+        overflow-y: auto;
+        border-top-left-radius: 10px;
+        border-bottom-left-radius: 10px;
+        background-color: rgba(245, 245, 245, 0.75); // Slightly different background for contrast
+        max-height: 60vh; // Limit the height
+
+        @media (max-width: calc(4 * $min-card-width)) {
+            display: none;
+        }
+
+        .experience-item-modal {
+            cursor: pointer;
+            padding: 10px;
+            border-bottom: 1px solid $border-color;
+            margin-bottom: 5px;
+            transition: background-color 0.2s;
+
+            font-size: $standard-font-size;
+            line-height: 1.5;
+
+            &:hover, &.active {
+                background-color: $tertiary-background-color;
+                color: $important-font-colour;
+            }
+        }
+    }
+
+    .experience-detail-modal {
+        flex-grow: 1;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
+        background-color: rgba(255, 255, 255, 0.93);
+        width: 70%;
+        overflow-y: auto; // Enable scrolling for the detail section
+
+        @media (max-width: calc(4 * $min-card-width)) {
+            flex-direction: column;
+            align-items: center;
+            border-top-left-radius: 10px;
+            border-bottom-left-radius: 10px;
+            width: 100%;
+        }
+
+        a {
+            color: $standard-font-colour; // Set the color to match your standard text color
+            text-decoration: underline; // Underline the link
+    
+            &:hover {
+                text-decoration: none; // Optionally, remove underline on hover for a change effect
+            }
+        }
+
+        .modal-header {
+            display: flex;
+            align-items: center;
+            width: 100%;
+
+            @media (max-width: calc(4 * $min-card-width)) {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .company-logo {
+                width: 75px;
+                height: auto;
+                margin-right: 20px;
+
+                @media (max-width: calc(4 * $min-card-width)) {
+                    margin-right: 0;
+                    margin-bottom: 20px;
+                }
+            }
+
+
+
+            .modal-text {
+                text-align: left;
+
+                @media (max-width: calc(4 * $min-card-width)) {
+                    text-align: center;
+                }
+
+                h2 {
+                    color: $border-color;
+                    margin: 5px 0;
+                    font-size: calc($standard-font-size * 1.5);
+                }
+
+                h3 {
+                    color: $border-color;
+                    margin: 5px 0;
+                    font-size: calc($standard-font-size * 1.2);
+                }
+            }
+        }
+
+        p {
+            color: $standard-font-colour;
+            font-size: $standard-font-size;
+            margin: 10px 0;
+
+            @media (max-width: calc(4 * $min-card-width)) {
+                text-align: justify;
+            }
+        }
+
+        // For HTML content inside longdesc
+        ul {
+            list-style-type: disc;
+            padding-left: 20px;
+            font-size: $standard-font-size;
+            color: $standard-font-colour;
+            margin: 10px 0;
+        }
+
+        li {
+            margin-bottom: 5px;
+        }
+
+        .skills {
+            padding-top: 10px;
+            padding-bottom: 10px;
+            font-size: $standard-font-size;
+            font-weight: bold;
+            color: rgb(99, 99, 99);
+
+            @media (max-width: calc(4 * $min-card-width)) {
+                text-align: center;
+            }
+          }
+    }
+}
+
 .experience-container {
     display: flex;
     flex-direction: column;
@@ -14,7 +169,6 @@
     list-style-type: none;
     width: 100%; // Full width of the container
 }
-
 
 .experience-item {
     cursor: pointer;
@@ -34,9 +188,7 @@
         .experience-shortdesc,
         .experience-location {
             color: $important-font-colour; // Change font color on hover
-            
         }
-        
     }
 
     .experience-title {
@@ -49,10 +201,6 @@
     .experience-location {
         color: $standard-font-colour;
         font-size: $standard-font-size; // Smaller font size for the short description
-        padding-top: 4px; // Space between title and short description 
+        padding-top: 4px; // Space between title and short description
     }
-}
-
-.experience-modal-content {
-    // styles for the modal content
 }
