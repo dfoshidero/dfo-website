@@ -10,8 +10,8 @@ function PortfolioCard() {
 
   useEffect(() => {
     const accessTokens = [
-      process.env.REACT_APP_INSTAGRAM_ACCESS_TOKEN_UNTITLEDFVR,
-      process.env.REACT_APP_INSTAGRAM_ACCESS_TOKEN_FARCHIVED,
+      secrets.REACT_APP_INSTAGRAM_ACCESS_TOKEN_UNTITLEDFVR,
+      secrets.REACT_APP_INSTAGRAM_ACCESS_TOKEN_FARCHIVED,
       // Add more access tokens as needed
     ];
 
