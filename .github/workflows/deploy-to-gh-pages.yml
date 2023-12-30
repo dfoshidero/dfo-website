@@ -18,13 +18,13 @@ jobs:
     - name: Build
       run: |
         npm install
-        npm run-script build
+        npm run build
       env:
         REACT_APP_INSTAGRAM_ACCESS_TOKEN_UNTITLEDFVR: ${{ secrets.REACT_APP_INSTAGRAM_ACCESS_TOKEN_UNTITLEDFVR }}
         REACT_APP_INSTAGRAM_ACCESS_TOKEN_FARCHIVED: ${{ secrets.REACT_APP_INSTAGRAM_ACCESS_TOKEN_FARCHIVED }}
 
-    - name: Deploy
-      uses: JamesIves/github-pages-deploy-action@releases/v3
+    - name: Deploy to GitHub Pages
+      uses: JamesIves/github-pages-deploy-action@v4.5.0
       with:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         BRANCH: gh-pages
