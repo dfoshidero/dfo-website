@@ -7,90 +7,83 @@ import './Portfolio.scss';
 function PortfolioCard() {
   const { openModal } = useContext(ModalContext);
   const [images, setImages] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    const fetchTokens = async () => {
+    const fetchData = async () => {
+      setLoading(true);
+      setError(null);
+  
       try {
-        const response = await axios.get('https://z3mlw599i2.execute-api.eu-west-2.amazonaws.com/test/fetchInstagramData');
-        const tokens = response.data.data;
-        return [tokens.secret1, tokens.secret2];
+        const response = await axios.get('https://z3mlw599i2.execute-api.eu-west-2.amazonaws.com/dev/fetchInstagramData');
+        const imagesData = JSON.parse(response.data.body); // Parse the JSON string into an array
+  
+        setImages(imagesData);
+        setLoading(false);
       } catch (error) {
-        setError(error); // Set the error state
-        return [];
+        console.error('Error:', error);
+        setError('Unable to pull images from Instagram.');
+        setLoading(false);
       }
     };
-
-    const fetchImages = async (accessTokens) => {
-      try {
-        const allImages = [];
-        for (const accessToken of accessTokens) {
-          const response = await axios.get(`https://graph.instagram.com/me/media`, {
-            params: {
-              fields: 'id,caption,media_type,media_url,timestamp,children{media_type,media_url}',
-              access_token: accessToken,
-            },
-          });
-
-          // Rest of your code for fetching and processing images
-
-          setIsLoading(false); // Set loading to false when data is fetched
-        }
-      } catch (error) {
-        console.error('Error fetching data from Instagram:', error);
-        setError(error); // Set the error state
-        setIsLoading(false); // Set loading to false in case of an error
-      }
-    };
-
-    fetchTokens().then((tokens) => {
-      if (tokens.length > 0) {
-        fetchImages(tokens).then(setImages);
-      }
-    });
+  
+    fetchData();
   }, []);
+  
+
+  // Conditional rendering based on loading and error states
+  if (loading) {
+    return <div className="centered"><p key="loading">Loading data...</p></div>;
+  }
+
+  if (error) {
+    const handleReportIssue = () => {
+      window.location.href = "mailto:dfoshidero@outlook.com" +
+        "?subject=Issue Report | Portfolio API " +
+        "&body=Hello,%0D%0A%0D%0AI have encountered an issue with the Instagram Portfolio feature on the website. There seems to be a technical problem affecting its functionality.%0D%0A%0D%0APlease investigate and resolve this issue at your earliest convenience.%0D%0A%0D%0AThank you.%0D%0A";
+    };
+
+    return (
+      <div className="centered">
+        <p key="error">{error}</p>
+        <p>Please select the links above to view the portfolio(s).</p>
+        <div className='report-padding'>
+          <button className="report-button" onClick={handleReportIssue}>Report Issue</button>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="portfolio-container">
-      {isLoading ? (
-        <p>Awaiting Data from Instagram API...</p>
-      ) : error ? (
-        <p>Unable to pull images from Instagram. Please select the links above to view portfolio.</p>
-      ) : (
-        <div>
-          <p>Pulled using Instagram API...</p>
-          <div className="portfolio-grid">
-            {/* Render images once data is available */}
-            {images.map((image, index) => {
-              return (
-                <div
-                  key={image.id}
-                  className={`portfolio-item ${index % 3 === 0 ? 'left' : index % 3 === 2 ? 'right' : ''}`}
-                  onClick={() => {
-                    openModal(
-                      <div className="portfolio-modal-content">
-                        <img src={image.media_url} alt={image.caption} style={{ opacity: 1 }}
-                        />
-                        <p>{image.caption}</p>
-                        {image.media_type === 'CAROUSEL_ALBUM' && (
-                          <p>{image.children[0].caption}</p>
-                        )}
-                      </div>
-                    );
-                  }}
-                >
-                  <img
-                    src={image.media_url}
-                    alt={image.caption}
-                    style={{ maxWidth: '100%', maxHeight: '100%' }}
-                  />
-                </div>
-              );
-            })}
+      <div className="pull-text">
+        <p>Pulled using Instagram API...</p>
+      </div>
+
+      <div className="portfolio-grid">
+        {images.map((image, index) => (
+          <div
+            key={image.id}
+            className={`portfolio-item ${index % 3 === 0 ? 'left' : index % 3 === 2 ? 'right' : ''}`}
+            onClick={() => openModal(
+              <div className="portfolio-modal-content">
+                <img src={image.media_url} alt={image.caption} style={{ opacity: 1 }}/>
+                <p>{image.caption}</p>
+                {image.media_type === 'CAROUSEL_ALBUM' && (
+                  <p>{image.children[0].caption}</p> // Display the carousel caption if available
+                )}
+              </div>
+            )}
+          >
+            <img
+              src={image.media_url}
+              alt={image.caption}
+              style={{ maxWidth: '100%', maxHeight: '100%' }}
+            />
           </div>
-        </div>
-      )}
+        ))}
+      </div>
     </div>
   );
 }

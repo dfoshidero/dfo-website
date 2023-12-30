@@ -58,6 +58,16 @@
     }
 }
 
+.centered {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    /* Center vertically within the viewport */
+}
+
+
 .portfolio-modal-content {
     display: flex;
     flex-direction: column;
@@ -85,5 +95,35 @@
         color: $border-color;
         border-radius: 8px;
         font-size: $bigger-font-size; // Smaller font size for the short description
+    }
+}
+
+.report-padding {
+padding: 5%;
+
+    .report-button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        justify-items: center;
+
+        background-color: $secondary-background-color; // Set your desired background color
+        color: $primary-text-color; // Set your desired text color
+        border: $line-width solid $border-color; // Set your desired border properties
+
+        border-radius: 14px; // Set your desired border radius
+        padding: 3px 8px; // Set your desired padding
+        font-size: $standard-font-size; // Set your desired font size
+        cursor: pointer;
+        transition: transform 0.3s, box-shadow 0.3s, opacity 0.3s;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        opacity: 0.6;
+
+        &:hover {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); // Set your desired shadow on hover
+            opacity: 1; // Full opacity on hover
+            text-decoration: none;
+            transform: translateY(-2px); // Slight lift on hover/focus
+        }
     }
 }
