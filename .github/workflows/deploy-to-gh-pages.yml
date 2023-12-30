@@ -25,7 +25,7 @@ jobs:
         
     - name: Check Environment Variables
       run: |
-        if [ -z "$REACT_APP_INSTAGRAM_ACCESS_TOKEN_UNTITLEDFVR" ]; then
+        if [ -z "${{ secrets.REACT_APP_INSTAGRAM_ACCESS_TOKEN_UNTITLEDFVR }}" ]; then
           echo "Token 1 is missing"
         else
           echo "Token 1 is set"
