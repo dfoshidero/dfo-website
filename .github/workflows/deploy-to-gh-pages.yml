@@ -13,7 +13,7 @@ jobs:
     steps:
     
     - name: Checkout
-      uses: actions/checkout@v1
+      uses: actions/checkout@v2
 
     - name: Build
       run: |
@@ -25,8 +25,18 @@ jobs:
         
     - name: Check Environment Variables
       run: |
-        echo "Token 1: $REACT_APP_INSTAGRAM_ACCESS_TOKEN_UNTITLEDFVR"
-        echo "Token 2: $REACT_APP_INSTAGRAM_ACCESS_TOKEN_FARCHIVED"
+        if [ -z "${{ secrets.REACT_APP_INSTAGRAM_ACCESS_TOKEN_UNTITLEDFVR }}" ]; then
+          echo "Token 1 is missing"
+        else
+          echo "Token 1 is set"
+        fi
+
+        if [ -z "${{ secrets.REACT_APP_INSTAGRAM_ACCESS_TOKEN_FARCHIVED }}" ]; then
+          echo "Token 2 is missing"
+        else
+          echo "Token 2 is set"
+        fi
+
 
 
     - name: Deploy to GitHub Pages
