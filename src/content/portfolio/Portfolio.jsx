@@ -7,6 +7,8 @@ import './Portfolio.scss';
 function PortfolioCard() {
   const { openModal } = useContext(ModalContext);
   const [images, setImages] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchTokens = async () => {
@@ -15,7 +17,7 @@ function PortfolioCard() {
         const tokens = response.data.data;
         return [tokens.secret1, tokens.secret2];
       } catch (error) {
-        alert('Error fetching tokens:', error);
+        setError(error); // Set the error state
         return [];
       }
     };
@@ -30,37 +32,15 @@ function PortfolioCard() {
               access_token: accessToken,
             },
           });
-  
-          const mediaData = response.data.data;
-  
-          for (const mediaItem of mediaData) {
-            if (mediaItem.media_type === 'IMAGE') {
-              allImages.push(mediaItem);
-            } else if (mediaItem.media_type === 'CAROUSEL_ALBUM') {
-              // Filter and add only the images from the carousel children
-              const carouselImages = mediaItem.children.data.filter(
-                (child) => child.media_type === 'IMAGE'
-              );
-  
-              carouselImages.forEach((carouselImage) => {
-                carouselImage.caption = mediaItem.caption; // Assign the carousel album caption
-              });
-  
-              allImages.push(...carouselImages);
-            }
-          }
+
+          // Rest of your code for fetching and processing images
+
+          setIsLoading(false); // Set loading to false when data is fetched
         }
-  
-        // Sort the images by date (timestamp)
-        const sortedImages = allImages.sort(
-          (a, b) => new Date(b.timestamp) - new Date(a.timestamp)
-        );
-  
-        console.log(sortedImages); // Inspect the sorted images
-        return sortedImages;
       } catch (error) {
         console.error('Error fetching data from Instagram:', error);
-        return [];
+        setError(error); // Set the error state
+        setIsLoading(false); // Set loading to false in case of an error
       }
     };
 
@@ -73,35 +53,44 @@ function PortfolioCard() {
 
   return (
     <div className="portfolio-container">
-      <p>Pulled using Instagram API...</p>
-      <div className="portfolio-grid">
-        {images.map((image, index) => {
-          return (
-            <div
-              key={image.id}
-              className={`portfolio-item ${index % 3 === 0 ? 'left' : index % 3 === 2 ? 'right' : ''}`}
-              onClick={() => {
-                openModal(
-                  <div className="portfolio-modal-content">
-                    <img src={image.media_url} alt={image.caption} style={{ opacity: 1 }}
-                    />
-                    <p>{image.caption}</p>
-                    {image.media_type === 'CAROUSEL_ALBUM' && (
-                      <p>{image.children[0].caption}</p> // Display the carousel caption if available
-                    )}
-                  </div>
-                );
-              }}
-            >
-              <img
-                src={image.media_url}
-                alt={image.caption}
-                style={{ maxWidth: '100%', maxHeight: '100%' }} // Set max-width and max-height to 100%
-              />
-            </div>
-          );
-        })}
-      </div>
+      {isLoading ? (
+        <p>Awaiting Data from Instagram API...</p>
+      ) : error ? (
+        <p>Unable to pull images from Instagram. Please select the links above to view portfolio.</p>
+      ) : (
+        <div>
+          <p>Pulled using Instagram API...</p>
+          <div className="portfolio-grid">
+            {/* Render images once data is available */}
+            {images.map((image, index) => {
+              return (
+                <div
+                  key={image.id}
+                  className={`portfolio-item ${index % 3 === 0 ? 'left' : index % 3 === 2 ? 'right' : ''}`}
+                  onClick={() => {
+                    openModal(
+                      <div className="portfolio-modal-content">
+                        <img src={image.media_url} alt={image.caption} style={{ opacity: 1 }}
+                        />
+                        <p>{image.caption}</p>
+                        {image.media_type === 'CAROUSEL_ALBUM' && (
+                          <p>{image.children[0].caption}</p>
+                        )}
+                      </div>
+                    );
+                  }}
+                >
+                  <img
+                    src={image.media_url}
+                    alt={image.caption}
+                    style={{ maxWidth: '100%', maxHeight: '100%' }}
+                  />
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      )}
     </div>
   );
 }
