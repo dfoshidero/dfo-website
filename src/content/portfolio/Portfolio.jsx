@@ -9,13 +9,18 @@ function PortfolioCard() {
   const [images, setImages] = useState([]);
 
   useEffect(() => {
-    const accessTokens = [
-      process.env.REACT_APP_INSTAGRAM_ACCESS_TOKEN_UNTITLEDFVR,
-      process.env.REACT_APP_INSTAGRAM_ACCESS_TOKEN_FARCHIVED,
-      // Add more access tokens as needed
-    ];
+    const fetchTokens = async () => {
+      try {
+        const response = await axios.get('https://z3mlw599i2.execute-api.eu-west-2.amazonaws.com/test/fetchInstagramData');
+        const tokens = response.data.data;
+        return [tokens.secret1, tokens.secret2];
+      } catch (error) {
+        alert('Error fetching tokens:', error);
+        return [];
+      }
+    };
 
-    const fetchImages = async () => {
+    const fetchImages = async (accessTokens) => {
       try {
         const allImages = [];
         for (const accessToken of accessTokens) {
@@ -54,12 +59,16 @@ function PortfolioCard() {
         console.log(sortedImages); // Inspect the sorted images
         return sortedImages;
       } catch (error) {
-        alert('Error fetching data from Instagram:', error);
+        console.error('Error fetching data from Instagram:', error);
         return [];
       }
     };
 
-    fetchImages().then(setImages);
+    fetchTokens().then((tokens) => {
+      if (tokens.length > 0) {
+        fetchImages(tokens).then(setImages);
+      }
+    });
   }, []);
 
   return (
