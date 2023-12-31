@@ -1,6 +1,6 @@
 # Daniel Favour's Personal Resume Website
 
-This repository contains the code for my personal resume website, hosted at [dfvro.com](https://www.dfvro.com). It showcases my professional skills, experiences, and projects.
+This repository contains the code for my personal resume website, hosted at [www.dfvro.com](https://www.dfvro.com). It showcases my professional skills, experiences, and projects.
 
 ## Technology Stack
 
