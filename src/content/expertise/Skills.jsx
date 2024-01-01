@@ -43,37 +43,42 @@ const skills = [
     },
     {
         id: 8,
-        skill: "Microsoft Power BI",
+        skill: "SQL",
         certified: false
     },
     {
         id: 9,
-        skill: "Autodesk Revit  ",
-        certified: true
+        skill: "MongoDB",
+        certified: false
     },
     {
         id: 10,
-        skill: "Autodesk AutoCAD",
+        skill: "Microsoft Power BI",
         certified: false
     },
     {
         id: 11,
-        skill: "Adobe Photoshop",
-        certified: false
+        skill: "Autodesk Revit  ",
+        certified: true
     },
     {
         id: 12,
-        skill: "Adobe Indesign",
+        skill: "Autodesk AutoCAD",
         certified: false
     },
     {
         id: 13,
-        skill: "Enscape",
+        skill: "Adobe Photoshop",
         certified: false
     },
     {
         id: 14,
-        skill: "Microsoft Suite ",
+        skill: "Adobe Indesign",
+        certified: false
+    },
+    {
+        id: 15,
+        skill: "Enscape",
         certified: false
     },
 ];
