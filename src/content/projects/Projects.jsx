@@ -35,9 +35,9 @@ const projects = [
   },
   {
     id: 1,
-    title: "Airline Database Simulator",
+    title: "Airline Database (CRUD) Simulator",
     stack: "Python with Tkinter, SQLite3",
-    description: "Basic database simulator developed to explore data management in the context of a real-world system.",
+    description: "Basic database simulator developed to explore data management in the context of a real-world system, using CRUD operations.",
     projectUrl: "https://github.com/dfoshidero/Airline-Database-Sim",
   },
 ];
