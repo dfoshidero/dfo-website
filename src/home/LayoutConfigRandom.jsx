@@ -150,6 +150,7 @@ const selectRandomElement = (array) => {
     return array[Math.floor(Math.random() * array.length)];
 };
 
+const allowAutoScroll = ['MY WORK(S)', 'PROJECTS', 'TECHNICAL SKILLS', 'EXPERIENCE', 'EDUCATION'];
 
 // Function to generate layout components based on the random layout
 export const generateLayoutComponents = (gridColumns, gridRows) => {
@@ -196,6 +197,7 @@ export const generateLayoutComponents = (gridColumns, gridRows) => {
                 extraContent = null;
         }
 
+        const shouldScroll = allowAutoScroll.includes(config.cardType);
 
         return () => (
             <Card
@@ -209,6 +211,7 @@ export const generateLayoutComponents = (gridColumns, gridRows) => {
                     // Apply the animation delay
                     animationDelay: `${animationDelay}s`,
                 }}
+                scroll={shouldScroll}
             >
                 {/* Render card content based on cardType */}
                 {config.cardType === 'EXPERIENCE' && <ExperienceCard />}
