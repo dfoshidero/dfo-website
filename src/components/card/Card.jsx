@@ -4,9 +4,10 @@ import './Card.scss';
 function Card({ title, extra, children, onClick, className, style, scroll }) {
   const contentRef = useRef(null);
   const scrollDirection = useRef(1); // 1 for down, -1 for up
-  const maxSpeed = 1; // Maximum speed limit
+  const scrollSpeed = 0.05; // Speed of scroll in pixels per millisecond
   const [isHovering, setIsHovering] = useState(false);
   const animationFrameId = useRef(null);
+  const lastFrameTime = useRef(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -27,17 +28,30 @@ function Card({ title, extra, children, onClick, className, style, scroll }) {
       }
     };
 
-    const autoScroll = () => {
-      if (contentRef.current && scroll && !isHovering) {
-        let newScrollTop = contentRef.current.scrollTop + scrollDirection.current * maxSpeed;
+    const autoScroll = (time) => {
+      if (lastFrameTime.current !== null && contentRef.current && scroll && !isHovering) {
+        const deltaTime = time - lastFrameTime.current;
+        const scrollTop = contentRef.current.scrollTop;
+        const clientHeight = contentRef.current.clientHeight;
+        const scrollHeight = contentRef.current.scrollHeight;
+        const scrollCenter = scrollTop + clientHeight / 2; // Calculate scroll center
 
-        if (newScrollTop <= 0 || newScrollTop >= contentRef.current.scrollHeight - contentRef.current.clientHeight) {
-          scrollDirection.current *= -1;
+        let newScrollCenter = scrollCenter + scrollDirection.current * scrollSpeed * deltaTime;
+        let newScrollTop = newScrollCenter - clientHeight / 2;
+
+        // Adjust boundary check for scroll center
+        if (newScrollTop <= 0) {
+          newScrollTop = 0;
+          scrollDirection.current = 1;
+        } else if (newScrollTop >= scrollHeight - clientHeight) {
+          newScrollTop = scrollHeight - clientHeight;
+          scrollDirection.current = -1;
         }
 
         contentRef.current.scrollTop = newScrollTop;
         handleScroll();
       }
+      lastFrameTime.current = time;
       animationFrameId.current = requestAnimationFrame(autoScroll);
     };
 
