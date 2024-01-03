@@ -3,17 +3,18 @@ import './Card.scss';
 
 function Card({ title, extra, children, onClick, className, style, scroll }) {
   const contentRef = useRef(null);
-  const scrollDirection = useRef(1); // 1 for down, -1 for up
   const maxSpeed = 1; // Maximum speed limit
   const [isHovering, setIsHovering] = useState(false);
-  const intervalId = useRef(null);
+
+  const autoScroll = useRef(null);
+  const isScrollingDown = useRef(true);
 
   useEffect(() => {
     const handleScroll = () => {
       if (!contentRef.current) {
         return;
       }
-      
+
       const { scrollTop, scrollHeight, clientHeight } = contentRef.current;
       let maskImage;
 
@@ -31,16 +32,28 @@ function Card({ title, extra, children, onClick, className, style, scroll }) {
       }
     };
 
-    const autoScroll = () => {
+    const handleAutoScroll = () => {
       if (contentRef.current && scroll && !isHovering) {
-        let newScrollTop = contentRef.current.scrollTop + scrollDirection.current * maxSpeed;
+        let newScrollTop;
 
-        if (newScrollTop <= 0 || newScrollTop >= contentRef.current.scrollHeight - contentRef.current.clientHeight) {
-          scrollDirection.current *= -1;
+        if (isScrollingDown.current) {
+          newScrollTop = contentRef.current.scrollTop + maxSpeed;
+
+          if (newScrollTop >= contentRef.current.scrollHeight - contentRef.current.clientHeight) {
+            isScrollingDown.current = false;
+          }
+        } else {
+          newScrollTop = contentRef.current.scrollTop - maxSpeed;
+
+          if (newScrollTop <= 0) {
+            isScrollingDown.current = true;
+          }
         }
 
         contentRef.current.scrollTop = newScrollTop;
         handleScroll(); // Update mask image during auto scroll
+
+        autoScroll.current = requestAnimationFrame(handleAutoScroll);
       }
     };
 
@@ -48,13 +61,15 @@ function Card({ title, extra, children, onClick, className, style, scroll }) {
     contentElement.addEventListener('scroll', handleScroll);
     handleScroll(); // Initial check
 
-    if (scroll && window.innerWidth > 768) { // Check both scroll prop and viewport width
-      intervalId.current = setInterval(autoScroll, 50); // Adjust interval as needed
+    if (scroll && window.innerWidth > 768) {
+      autoScroll.current = requestAnimationFrame(handleAutoScroll);
     }
 
     return () => {
       contentElement.removeEventListener('scroll', handleScroll);
-      clearInterval(intervalId.current);
+      if (autoScroll.current) {
+        cancelAnimationFrame(autoScroll.current);
+      }
     };
   }, [isHovering, scroll]);
 
