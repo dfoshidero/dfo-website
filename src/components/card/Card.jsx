@@ -10,24 +10,22 @@ function Card({ title, extra, children, onClick, className, style, scroll }) {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (!contentRef.current) {
-        return;
-      }
+      if (contentRef.current) {
+        const { scrollTop, scrollHeight, clientHeight } = contentRef.current;
+        let maskImage;
 
-      const { scrollTop, scrollHeight, clientHeight } = contentRef.current;
-      let maskImage;
+        if (scrollHeight > clientHeight) {
+          // Calculate the opacity based on scroll position
+          const topOpacity = Math.min((scrollHeight - scrollTop - clientHeight) / 20, 1);
+          const bottomOpacity = Math.min(scrollTop / 20, 1);
 
-      if (scrollHeight > clientHeight) {
-        // Calculate the opacity based on scroll position
-        const topOpacity = Math.min((scrollHeight - scrollTop - clientHeight) / 20, 1);
-        const bottomOpacity = Math.min(scrollTop / 20, 1);
+          // Adjust the mask images with the calculated opacity
+          maskImage = `linear-gradient(to bottom, rgba(0, 0, 0, ${topOpacity}) 0%, black 20%, black 80%, rgba(0, 0, 0, ${bottomOpacity}) 100%)`;
 
-        // Adjust the mask images with the calculated opacity
-        maskImage = `linear-gradient(to bottom, rgba(0, 0, 0, ${topOpacity}) 0%, black 20%, black 80%, rgba(0, 0, 0, ${bottomOpacity}) 100%)`;
-
-        contentRef.current.style.maskImage = maskImage;
-      } else {
-        contentRef.current.style.maskImage = 'none';
+          contentRef.current.style.maskImage = maskImage;
+        } else {
+          contentRef.current.style.maskImage = 'none';
+        }
       }
     };
 
@@ -49,34 +47,43 @@ function Card({ title, extra, children, onClick, className, style, scroll }) {
           }
         }
 
-        contentRef.current.style.transition = 'scroll-behavior 0.1s'; // Add smooth transition
-        contentRef.current.scrollTop = newScrollTop;
-        handleScroll(); // Update mask image during auto-scroll
+        if (contentRef.current) {
+          contentRef.current.style.transition = 'scroll-behavior 0.001s'; // Add smooth transition
+          contentRef.current.scrollTop = newScrollTop;
+          handleScroll(); // Update mask image during auto-scroll
 
-        // Reset transition after a delay to allow for smooth scrolling effect
-        setTimeout(() => {
-          contentRef.current.style.transition = 'none';
-        }, 500);
+          // Reset transition after a delay to allow for smooth scrolling effect
+          setTimeout(() => {
+            if (contentRef.current) {
+              contentRef.current.style.transition = 'none';
+            }
+          }, 500);
+        }
       }
     };
 
     const contentElement = contentRef.current;
-    contentElement.addEventListener('scroll', handleScroll);
-    handleScroll(); // Initial check
 
-    if (scroll && window.innerWidth > 768 && !isHovering) {
-      const framesPerSecond = 60; // You can adjust this value as needed
-      const interval = 2800 / framesPerSecond;
-      const autoScrollInterval = setInterval(handleAutoScroll, interval);
+    if (contentElement) {
+      contentElement.addEventListener('scroll', handleScroll);
+      handleScroll(); // Initial check
 
-      return () => {
-        clearInterval(autoScrollInterval);
-        contentElement.removeEventListener('scroll', handleScroll);
-      };
+      if (scroll && window.innerWidth > 768 && !isHovering) {
+        const framesPerSecond = 60; // You can adjust this value as needed
+        const interval = 2800 / framesPerSecond;
+        const autoScrollInterval = setInterval(handleAutoScroll, interval);
+
+        return () => {
+          clearInterval(autoScrollInterval);
+          contentElement.removeEventListener('scroll', handleScroll);
+        };
+      }
     }
 
     return () => {
-      contentElement.removeEventListener('scroll', handleScroll);
+      if (contentElement) {
+        contentElement.removeEventListener('scroll', handleScroll);
+      }
     };
   }, [isHovering, scroll]);
 
@@ -86,9 +93,9 @@ function Card({ title, extra, children, onClick, className, style, scroll }) {
   const cardClasses = `card ${className || ''}`;
 
   return (
-    <div 
-      className={cardClasses} 
-      onClick={onClick} 
+    <div
+      className={cardClasses}
+      onClick={onClick}
       style={style}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
