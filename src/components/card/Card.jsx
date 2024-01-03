@@ -4,7 +4,7 @@ import './Card.scss';
 function Card({ title, extra, children, onClick, className, style, scroll }) {
   const contentRef = useRef(null);
   const scrollDirection = useRef(1); // 1 for down, -1 for up
-  const scrollAmount = 1; // Fixed amount of pixels to scroll per frame
+  const maxSpeed = 1; // Maximum speed limit
   const [isHovering, setIsHovering] = useState(false);
   const rafId = useRef(null);
 
@@ -17,8 +17,11 @@ function Card({ title, extra, children, onClick, className, style, scroll }) {
     let maskImage;
 
     if (scrollHeight > clientHeight) {
+      // Calculate the opacity based on scroll position
       const topOpacity = Math.min((scrollHeight - scrollTop - clientHeight) / 20, 1);
       const bottomOpacity = Math.min(scrollTop / 20, 1);
+
+      // Adjust the mask images with the calculated opacity
       maskImage = `linear-gradient(to bottom, rgba(0, 0, 0, ${topOpacity}) 0%, black 20%, black 80%, rgba(0, 0, 0, ${bottomOpacity}) 100%)`;
       contentRef.current.style.maskImage = maskImage;
     } else {
@@ -32,7 +35,7 @@ function Card({ title, extra, children, onClick, className, style, scroll }) {
         return;
       }
 
-      let newScrollTop = contentRef.current.scrollTop + scrollDirection.current * scrollAmount;
+      let newScrollTop = contentRef.current.scrollTop + scrollDirection.current * maxSpeed;
 
       if (newScrollTop <= 0 || newScrollTop >= contentRef.current.scrollHeight - contentRef.current.clientHeight) {
         scrollDirection.current *= -1;
@@ -58,7 +61,7 @@ function Card({ title, extra, children, onClick, className, style, scroll }) {
         cancelAnimationFrame(rafId.current);
       }
     };
-  }, [isHovering, scroll]);
+  }, [isHovering, scroll]); // Dependencies remain the same
 
   const handleMouseEnter = () => setIsHovering(true);
   const handleMouseLeave = () => setIsHovering(false);
