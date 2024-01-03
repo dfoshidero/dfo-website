@@ -6,7 +6,6 @@ function Card({ title, extra, children, onClick, className, style, scroll }) {
   const maxSpeed = 1; // Maximum speed limit
   const [isHovering, setIsHovering] = useState(false);
 
-  const autoScroll = useRef(null);
   const isScrollingDown = useRef(true);
 
   useEffect(() => {
@@ -50,10 +49,14 @@ function Card({ title, extra, children, onClick, className, style, scroll }) {
           }
         }
 
+        contentRef.current.style.transition = 'scroll-behavior 0.1s'; // Add smooth transition
         contentRef.current.scrollTop = newScrollTop;
-        handleScroll(); // Update mask image during auto scroll
+        handleScroll(); // Update mask image during auto-scroll
 
-        autoScroll.current = requestAnimationFrame(handleAutoScroll);
+        // Reset transition after a delay to allow for smooth scrolling effect
+        setTimeout(() => {
+          contentRef.current.style.transition = 'none';
+        }, 500);
       }
     };
 
@@ -61,15 +64,19 @@ function Card({ title, extra, children, onClick, className, style, scroll }) {
     contentElement.addEventListener('scroll', handleScroll);
     handleScroll(); // Initial check
 
-    if (scroll && window.innerWidth > 768) {
-      autoScroll.current = requestAnimationFrame(handleAutoScroll);
+    if (scroll && window.innerWidth > 768 && !isHovering) {
+      const framesPerSecond = 60; // You can adjust this value as needed
+      const interval = 2800 / framesPerSecond;
+      const autoScrollInterval = setInterval(handleAutoScroll, interval);
+
+      return () => {
+        clearInterval(autoScrollInterval);
+        contentElement.removeEventListener('scroll', handleScroll);
+      };
     }
 
     return () => {
       contentElement.removeEventListener('scroll', handleScroll);
-      if (autoScroll.current) {
-        cancelAnimationFrame(autoScroll.current);
-      }
     };
   }, [isHovering, scroll]);
 
