@@ -6,21 +6,25 @@ function Card({ title, extra, children, onClick, className, style, scroll }) {
   const scrollDirection = useRef(1); // 1 for down, -1 for up
   const maxSpeed = 1; // Maximum speed limit
   const [isHovering, setIsHovering] = useState(false);
-  const animationFrameId = useRef(null);
+  const intervalId = useRef(null);
 
   useEffect(() => {
     const handleScroll = () => {
       if (!contentRef.current) {
         return;
       }
-
+      
       const { scrollTop, scrollHeight, clientHeight } = contentRef.current;
       let maskImage;
 
       if (scrollHeight > clientHeight) {
+        // Calculate the opacity based on scroll position
         const topOpacity = Math.min((scrollHeight - scrollTop - clientHeight) / 20, 1);
         const bottomOpacity = Math.min(scrollTop / 20, 1);
+
+        // Adjust the mask images with the calculated opacity
         maskImage = `linear-gradient(to bottom, rgba(0, 0, 0, ${topOpacity}) 0%, black 20%, black 80%, rgba(0, 0, 0, ${bottomOpacity}) 100%)`;
+
         contentRef.current.style.maskImage = maskImage;
       } else {
         contentRef.current.style.maskImage = 'none';
@@ -36,22 +40,21 @@ function Card({ title, extra, children, onClick, className, style, scroll }) {
         }
 
         contentRef.current.scrollTop = newScrollTop;
-        handleScroll();
+        handleScroll(); // Update mask image during auto scroll
       }
-      animationFrameId.current = requestAnimationFrame(autoScroll);
     };
 
     const contentElement = contentRef.current;
     contentElement.addEventListener('scroll', handleScroll);
-    handleScroll();
+    handleScroll(); // Initial check
 
-    if (scroll && window.innerWidth > 768) {
-      animationFrameId.current = requestAnimationFrame(autoScroll);
+    if (scroll && window.innerWidth > 768) { // Check both scroll prop and viewport width
+      intervalId.current = setInterval(autoScroll, 50); // Adjust interval as needed
     }
 
     return () => {
       contentElement.removeEventListener('scroll', handleScroll);
-      cancelAnimationFrame(animationFrameId.current);
+      clearInterval(intervalId.current);
     };
   }, [isHovering, scroll]);
 
@@ -61,9 +64,9 @@ function Card({ title, extra, children, onClick, className, style, scroll }) {
   const cardClasses = `card ${className || ''}`;
 
   return (
-    <div
-      className={cardClasses}
-      onClick={onClick}
+    <div 
+      className={cardClasses} 
+      onClick={onClick} 
       style={style}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
