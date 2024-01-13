@@ -27,7 +27,7 @@ const cardTypes = {
 		{ columns: 2, rows: 3 },
 	],
 	"MY WORK(S)": [{ columns: 2, rows: 2 }],
-	EDUCATION: [
+	"EDUCATION & CERTIFICATIONS": [
 		{ columns: 2, rows: 1 },
 		{ columns: 1, rows: 2 },
 		{ columns: 2, rows: 2 },
@@ -133,7 +133,7 @@ const getAvailableCardTypesAndSizes = (
 				// Exclude specific card sizes when gridRows is 12
 				if (
 					gridRows === 12 &&
-					((cardType === "EDUCATION" &&
+					((cardType === "EDUCATION & CERTIFICATIONS" &&
 						size.columns === 2 &&
 						size.rows === 2) ||
 						(cardType === "STATUS" && size.columns === 2 && size.rows === 1))
@@ -143,9 +143,9 @@ const getAvailableCardTypesAndSizes = (
 
 				if (
 					gridRows === 4 &&
-					((cardType === "EDUCATION" &&
-						size.columns === 1 &&
-						size.rows === 2))
+					cardType === "EDUCATION & CERTIFICATIONS" &&
+					size.columns === 1 &&
+					size.rows === 2
 				) {
 					return;
 				}
@@ -306,7 +306,7 @@ export const generateLayoutComponents = (gridColumns, gridRows) => {
 			>
 				{/* Render card content based on cardType */}
 				{config.cardType === "EXPERIENCE" && <ExperienceCard />}
-				{config.cardType === "EDUCATION" && <EducationCard />}
+				{config.cardType === "EDUCATION & CERTIFICATIONS" && <EducationCard />}
 				{config.cardType === "TIMEZONE" && <AnalogClock />}
 				{config.cardType === "PROJECTS" && <ProjectCard />}
 				{config.cardType === "STATUS" && <StatusCard />}
