@@ -1,10 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-<!DOCTYPE html>
-<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="%PUBLIC_URL%/favicon.ico">
+  <link rel="icon" href="./favicon.png">
+  <title>DFO</title>
+
+  <style>
+    body {
+      opacity: 0;
+      animation: fadeInAnimation ease 1s;
+      animation-delay: 1s;
+      animation-iteration-count: 1;
+      animation-fill-mode: forwards;
+    }
+
+    html {
+      animation: fadeInAnimation ease 1s;
+      animation-iteration-count: 1;
+      animation-fill-mode: forwards;
+    }
+
+    @keyframes fadeInAnimation {
+      0% {
+        opacity: 0;
+      }
+
+      100% {
+        opacity: 1;
+      }
+    }
+  </style>
+
   <script type="text/javascript">
     // Single Page Apps for GitHub Pages
     // MIT License
@@ -16,50 +45,22 @@
     // When the single page app is loaded further down in this file,
     // the correct url will be waiting in the browser's history for
     // the single page app to route accordingly.
-    (function(l) {
-      if (l.search[1] === '/' ) {
-        var decoded = l.search.slice(1).split('&').map(function(s) { 
+    (function (l) {
+      if (l.search[1] === '/') {
+        var decoded = l.search.slice(1).split('&').map(function (s) {
           return s.replace(/~and~/g, '&')
         }).join('?');
         window.history.replaceState(null, null,
-            l.pathname.slice(0, -1) + decoded + l.hash
+          l.pathname.slice(0, -1) + decoded + l.hash
         );
       }
-    }(window.location))
+    }(window.location));
   </script>
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" href="./favicon.png">
-  <title>DFO</title>
-  <style>
-    body {
-        opacity: 0;
-        animation: fadeInAnimation ease 1s;
-        animation-delay: 1s;
-        animation-iteration-count: 1;
-        animation-fill-mode: forwards;
-    }
-
-    html {
-        animation: fadeInAnimation ease 1s;
-        animation-iteration-count: 1;
-        animation-fill-mode: forwards;
-    }
-
-    @keyframes fadeInAnimation {
-        0% {
-            opacity: 0;
-        }
-        100% {
-            opacity: 1;
-        }
-    }
-</style>
 </head>
+
 <body>
   <noscript>You need JavaScript to run this page.</noscript>
   <div id="root"></div>
-  
 </body>
+
 </html>

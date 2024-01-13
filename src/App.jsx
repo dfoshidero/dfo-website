@@ -7,10 +7,6 @@ import Modal from "./components/modal/Modal";
 
 import Enter from "./content/entry/Enter";
 import Home from "./home/Home";
-import Experience from "./content/experience/Experience";
-import Projects from "./content/projects/Projects";
-import Portfolio from "./content/portfolio/Portfolio";
-import Contact from "./content/contact/Contact";
 
 function App() {
   return (
@@ -19,10 +15,6 @@ function App() {
         <Routes>
           <Route path="/" element={<Enter />} />
           <Route path="/home" element={<Home />} />
-          <Route path="/experience" element={<Experience />} />
-          <Route path="/projects" element={<Projects />} />
-          <Route path="/portfolio" element={<Portfolio />} />
-          <Route path="/contact" element={<Contact />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </Router>
