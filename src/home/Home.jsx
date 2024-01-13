@@ -43,27 +43,6 @@ function Home() {
     refreshLayouts();
   }, [refreshLayouts]);
 
-  useEffect(() => {
-    // Add initial animation class to all cards
-    const cards = containerRef.current.querySelectorAll('.card');
-    cards.forEach(card => {
-      card.classList.add('animate-from-middle');
-
-      // Function to handle animation end
-      const handleAnimationEnd = () => {
-        card.classList.remove('animate-from-middle');
-      };
-
-      card.addEventListener('animationend', handleAnimationEnd);
-
-      return () => {
-        cards.forEach(card => {
-          card.removeEventListener('animationend', handleAnimationEnd);
-        });
-      };
-    });
-  }, [gridColumns, gridRows]);
-
   return (
     <div>
       <div className="page-framer" key={layoutComponents}>

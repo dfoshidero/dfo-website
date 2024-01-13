@@ -40,14 +40,9 @@
     }
 }
 
-.animate-from-middle {
-    animation: scaleUp 1s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
-    animation-delay: 0.9s;
-}
-
 .page-framer {
-    animation: fadeInAnimation ease 1s;
-    animation-delay: 0.9s;
+    animation: fadeInAnimation ease 2s;
+    animation-delay: 0s;
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
 
