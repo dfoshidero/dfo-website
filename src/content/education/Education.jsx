@@ -5,7 +5,7 @@ import ArrowOutwardIcon from '@mui/icons-material/ArrowOutward';
 
 const educations = [
 	{
-		id: 5,
+		id: 1001,
 		title: "Master of Science (M.Sc) // Computer Science",
 		location: "Bath, United Kingdom",
 		school: "University of Bath",
@@ -15,7 +15,7 @@ const educations = [
 		// More details can be added here if needed
 	},
 	{
-		id: 4,
+		id: 1000,
 		title: "Bachelor of Science with Honours (B.Sc Hons) // Architecture",
 		location: "Bath, United Kingdom",
 		school: "University of Bath",
@@ -23,6 +23,12 @@ const educations = [
 		achieved: "2:1",
 		type: "degree",
 		// More details can be added here if needed
+	},
+	{
+		id: 4,
+		title: "Udemy // C Programming for Beginners",
+		graduation: "Issued Feb 2024",
+		link: "https://www.udemy.com/certificate/UC-8d4d39f2-4002-415b-beb5-1eb00c24ec2e/",
 	},
 	{
 		id: 3,

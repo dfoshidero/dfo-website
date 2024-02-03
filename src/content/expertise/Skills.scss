@@ -58,4 +58,32 @@
             font-size: $standard-font-size * 1.1;
         }
     }
+
+    .completed-section {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        color: violet;
+        font-size: $standard-font-size;
+        position: relative;
+        margin-right: 4px;
+        text-shadow: 0 0 20px violet; // Adds glow to the text
+
+        &:hover {
+            text-shadow: 0 0 50px violet;
+        }
+    
+        // Add this to override the cursor for non-clickable items
+        &.non-clickable {
+            cursor: default;
+        }
+
+        .completed-label {
+            margin-right: 4px;
+        }
+
+        .certified-icon {
+            font-size: $standard-font-size * 1.1;
+        }
+    }
 }
