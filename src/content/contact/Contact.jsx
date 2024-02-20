@@ -6,7 +6,7 @@ import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 
 
 export default function ContactCard() {
-  const pdfUrl = "Oshidero_Daniel Favour_CV.pdf";
+  const pdfUrl = "Oshidero_Daniel_Favour_CV.pdf";
 
   return (
     <div className="contact-container">
