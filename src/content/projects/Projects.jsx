@@ -3,6 +3,7 @@ import './Projects.scss';
 
 import PlayCircleOutlineIcon from '@mui/icons-material/PlayCircleOutline';
 
+import poolImage from "../../assets/images/project-icons/pool.png";
 import bloomImage from '../../assets/images/project-icons/bloom.png';
 import chip8Image from '../../assets/images/project-icons/chip-8.png';
 import personalWebsite from '../../assets/images/project-icons/personal-website.png';
@@ -11,24 +12,37 @@ const projects = [
   {
     id: 1000,
     title: "DFVRO | Personal Resume Website",
-    description: "If you're seeing this, you've successfully found my personal hub. Be sure to check it out on both mobile and web.",
+    description:
+      "If you're seeing this, you've successfully found my personal hub. Be sure to check it out on both mobile and web.",
     stack: "JavaScript with React, SCSS, Node.js, AWS for API interactions.",
     imageUrl: personalWebsite,
     projectUrl: "https://github.com/dfoshidero/dfo-website",
   },
   {
+    id: 4,
+    title: "Pool | Hack South West 2024 Hackathon",
+    description:
+      "Hackathon Runner-Up: Pool, is a platform for expense-sharing and straightforward investment. It offers returns on investment for projects through community support.",
+    stack: "JavaScript with React-Native, Node.js, Firebase",
+    imageUrl: poolImage,
+    projectUrl: "https://devpost.com/software/pool-nzrkq8",
+    videoUrl: "https://www.youtube.com/watch?v=VJa4_xRdSYE",
+  },
+  {
     id: 3,
     title: "Bloom",
-    description: "Bloom is an educational mobile app by Team Plum for University of Bath's CM50109 module. It teaches indoor plant care and offers interactive gameplay with rewards.",
+    description:
+      "Bloom is an educational mobile app by Team Plum for University of Bath's CM50109 module. It teaches indoor plant care and offers interactive gameplay with rewards.",
     stack: "JavaScript with React-Native, Expo, Node.js",
     imageUrl: bloomImage,
     projectUrl: "https://github.com/dfoshidero/Bloom",
-    videoUrl: "https://www.youtube.com/watch?v=v2pALOEpWOQ"
+    videoUrl: "https://www.youtube.com/watch?v=v2pALOEpWOQ",
   },
   {
     id: 2,
     title: "CHIP-8 Emulator // Ongoing",
-    description: "This emulator aims to replicate the behaviour of a CHIP-8 machine, allowing users to run and interact with CHIP-8 programs.",
+    description:
+      "This emulator aims to replicate the behaviour of a CHIP-8 machine, allowing users to run and interact with CHIP-8 programs.",
     stack: "C, SDL2",
     imageUrl: chip8Image,
     projectUrl: "https://github.com/dfoshidero/CHIP-8-Emulator",
@@ -37,7 +51,8 @@ const projects = [
     id: 1,
     title: "Airline Database (CRUD) Simulator",
     stack: "Python with Tkinter, SQLite3",
-    description: "Basic database simulator developed to explore data management in the context of a real-world system, using CRUD operations.",
+    description:
+      "Basic database simulator developed to explore data management in the context of a real-world system, using CRUD operations.",
     projectUrl: "https://github.com/dfoshidero/Database-CRUD-Sim",
   },
 ];
