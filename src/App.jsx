@@ -1,20 +1,25 @@
-import React, {useState} from "react";
+import React from "react";
+import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
 import "./App.scss";
+
+import { ModalProvider } from "./utils/modalContext"
+import Modal from "./components/modal/Modal";
+
 import Enter from "./content/entry/Enter";
 import Home from "./home/Home";
 
 function App() {
-  const [hasEntered, setHasEntered] = useState(false);
-
-  const handleEnter = () => {
-    setHasEntered(true);
-  };
-
   return (
-    <div>
-      {!hasEntered && <Enter onEnter={handleEnter} />}
-      {hasEntered && <Home />}
-    </div>
+    <ModalProvider>
+      <Router>
+        <Routes>
+          <Route path="/" element={<Enter />} />
+          <Route path="/home" element={<Home />} />
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Routes>
+      </Router>
+      <Modal />
+    </ModalProvider>
   );
 }
 
