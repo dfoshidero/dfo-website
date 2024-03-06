@@ -16,7 +16,7 @@ function PortfolioCard() {
       setError(null);
   
       try {
-        const response = await axios.get('https://z3mlw599i2.execute-api.eu-west-2.amazonaws.com/dev/fetchInstagramData');
+        // const response = await axios.get('https://z3mlw599i2.execute-api.eu-west-2.amazonaws.com/dev/fetchInstagramData');
         const imagesData = JSON.parse(response.data.body); // Parse the JSON string into an array
   
         setImages(imagesData);
