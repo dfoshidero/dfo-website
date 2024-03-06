@@ -10,26 +10,27 @@ function PortfolioCard() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     setLoading(true);
-  //     setError(null);
+  useEffect(() => {
+    const fetchData = async () => {
+      setLoading(true);
+      setError(null);
   
-  //     try {
-  //       const response = await axios.get('https://z3mlw599i2.execute-api.eu-west-2.amazonaws.com/dev/fetchInstagramData');
-  //       const imagesData = JSON.parse(response.data.body); // Parse the JSON string into an array
+      try {
+        const response = await axios.get('https://z3mlw599i2.execute-api.eu-west-2.amazonaws.com/test/fetchInstagramData');
+        const imagesData = JSON.parse(response.data.body); // Parse the JSON string into an array
+        console.log(imagesData);
+
+        setImages(imagesData);
+        setLoading(false);
+      } catch (error) {
+        console.error('Error:', error);
+        setError('Unable to pull images from Instagram.');
+        setLoading(false);
+      }
+    };
   
-  //       setImages(imagesData);
-  //       setLoading(false);
-  //     } catch (error) {
-  //       console.error('Error:', error);
-  //       setError('Unable to pull images from Instagram.');
-  //       setLoading(false);
-  //     }
-  //   };
-  
-  //   fetchData();
-  // }, []);
+    fetchData();
+  }, []);
   
 
   // Conditional rendering based on loading and error states
