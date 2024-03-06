@@ -14,23 +14,33 @@ function PortfolioCard() {
     const fetchData = async () => {
       setLoading(true);
       setError(null);
-  
+
       try {
-        const response = await axios.get('https://z3mlw599i2.execute-api.eu-west-2.amazonaws.com/test/fetchInstagramData');
+        const response = await axios.get(
+          "https://z3mlw599i2.execute-api.eu-west-2.amazonaws.com/dev/fetchInstagramData"
+        );
         const imagesData = JSON.parse(response.data.body); // Parse the JSON string into an array
-        console.log(imagesData);
+
+        if (!Array.isArray(imagesData)) {
+          setError(
+            "Unable to pull images from Instagram. API call returned non-array value."
+          );
+          setLoading(false);
+          return;
+        }
 
         setImages(imagesData);
         setLoading(false);
       } catch (error) {
-        console.error('Error:', error);
-        setError('Unable to pull images from Instagram.');
+        console.error("Error:", error);
+        setError("Unable to pull images from Instagram. API call failed.");
         setLoading(false);
       }
     };
-  
+
     fetchData();
   }, []);
+
   
 
   // Conditional rendering based on loading and error states
@@ -47,13 +57,20 @@ function PortfolioCard() {
 
     return (
       <div className="centered">
-        <p key="error">{error}</p>
-        <p>Please select the links above to view the portfolio(s).</p>
-        <div className='report-padding'>
-          <button className="report-button" onClick={handleReportIssue}>Report Issue</button>
+        <p key="error" style={{ textAlign: "center" }}>
+          {error}
+        </p>
+        <p style={{ textAlign: "center" }}>
+          Please select the links above to view the portfolio(s).
+        </p>
+        <div className="report-padding">
+          <button className="report-button" onClick={handleReportIssue}>
+            Report Issue
+          </button>
         </div>
       </div>
     );
+
   }
 
   return (
