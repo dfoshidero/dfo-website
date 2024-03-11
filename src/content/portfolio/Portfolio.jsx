@@ -23,9 +23,7 @@ function PortfolioCard() {
         console.log(imagesData);
 
         if (!Array.isArray(imagesData)) {
-          setError(
-            "Unable to pull images from Instagram. API token has expired."
-          );
+          setError("API connected; token expired or response format invalid.");
           setLoading(false);
           return;
         }
@@ -34,7 +32,7 @@ function PortfolioCard() {
         setLoading(false);
       } catch (error) {
         console.error("Error:", error);
-        setError("Unable to pull images from Instagram. API call failed.");
+        setError("Failed to fetch Instagram images: Connection or API error.");
         setLoading(false);
       }
     };
