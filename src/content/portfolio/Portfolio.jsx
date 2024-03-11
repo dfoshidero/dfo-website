@@ -24,7 +24,7 @@ function PortfolioCard() {
 
         if (!Array.isArray(imagesData)) {
           setError(
-            "Unable to pull images from Instagram. API call returned non-array value."
+            "Unable to pull images from Instagram. API token has expired."
           );
           setLoading(false);
           return;
