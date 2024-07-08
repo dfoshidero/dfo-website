@@ -58,8 +58,7 @@ function PortfolioCard() {
       <div className="centered">
         <p key="error" style={{ textAlign: "center" }}>
           {error}
-        </p>
-        <p style={{ textAlign: "center" }}>
+          <br />
           Please select the link above to view.
         </p>
         <div className="report-padding">
