@@ -16,30 +16,31 @@ import SeeMore from "../components/seemore-button/SeeMore";
 
 // Define the possible sizes for each card type
 const cardTypes = {
-	EXPERIENCE: [
-		{ columns: 2, rows: 3 },
-		{ columns: 2, rows: 2 },
-	], // Now an array of sizes
-	TIMEZONE: [{ columns: 1, rows: 1 }],
-	CONNECT: [{ columns: 1, rows: 1 }],
-	PROJECTS: [
-		{ columns: 2, rows: 2 },
-		{ columns: 2, rows: 3 },
-	],
-	"MY WORK(S)": [{ columns: 2, rows: 2 }],
-	"EDUCATION & CERTIFICATIONS": [
-		{ columns: 2, rows: 1 },
-		{ columns: 1, rows: 2 },
-		{ columns: 2, rows: 2 },
-	],
-	RECOMMENDATIONS: [{ columns: 2, rows: 1 }],
-	STATUS: [
-		{ columns: 2, rows: 1 },
-		{ columns: 1, rows: 1 },
-	],
-	"TECHNICAL SKILLS": [
-		{ columns: 1, rows: 2 },
-	], // Will include skills and certifications. CERTIFIED SKILLS go first.
+  EXPERIENCE: [
+    { columns: 2, rows: 3 },
+    { columns: 2, rows: 2 },
+  ], // Now an array of sizes
+  TIMEZONE: [{ columns: 1, rows: 1 }],
+  CONNECT: [{ columns: 1, rows: 1 }],
+  PROJECTS: [
+    { columns: 2, rows: 2 },
+    { columns: 2, rows: 3 },
+  ],
+  "MY WORK(S)": [{ columns: 2, rows: 2 }],
+  "EDUCATION & CERTIFICATIONS": [
+    { columns: 2, rows: 1 },
+    { columns: 1, rows: 2 },
+    { columns: 2, rows: 2 },
+  ],
+  RECOMMENDATIONS: [{ columns: 2, rows: 1 }],
+  STATUS: [
+    { columns: 2, rows: 1 },
+    { columns: 1, rows: 1 },
+  ],
+  "TECHNICAL SKILLS": [
+    { columns: 1, rows: 2 },
+    { columns: 1, rows: 1 },
+  ], // Will include skills and certifications. CERTIFIED SKILLS go first.
 };
 
 // Function to check if the layout has at least two cards from [TIMEZONE, STATUS, CONNECT] in the first three rows for mobile layout
