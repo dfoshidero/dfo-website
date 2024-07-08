@@ -62,7 +62,7 @@ function PortfolioCard() {
           {error}
         </p>
         <p style={{ textAlign: "center" }}>
-          Please select the links above to view the portfolio(s).
+          Please select the link above to view.
         </p>
         <div className="report-padding">
           <button className="report-button" onClick={handleReportIssue}>

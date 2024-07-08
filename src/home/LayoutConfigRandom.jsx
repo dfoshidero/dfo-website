@@ -272,14 +272,9 @@ export const generateLayoutComponents = (gridColumns, gridRows) => {
 					<div style={{ display: "flex", flexDirection: "row" }}>
 						<SeeMore
 							url="https://www.instagram.com/untitled.fvr/"
-							text="TRADITIONAL"
+							text="PORTFOLIO"
 							style={{ marginRight: "10px" }} // Optional margin between components
 						/>{" "}
-						||
-						<SeeMore
-							url="https://www.instagram.com/_farchived/"
-							text="DIGITAL"
-						/>
 					</div>
 				);
 				break;
