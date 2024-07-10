@@ -14,15 +14,31 @@ const AnalogClock = () => {
     };
   }, []);
 
-  // Use getUTCHours, getUTCMinutes, and getUTCSeconds for GMT time
-  const hours = time.getUTCHours();
-  const minutes = time.getUTCMinutes();
-  const seconds = time.getUTCSeconds();
+  const getLondonTime = () => {
+    const formatter = new Intl.DateTimeFormat("en-GB", {
+      timeZone: "Europe/London",
+      hour: "numeric",
+      minute: "numeric",
+      second: "numeric",
+      hour12: false,
+    });
+
+    const parts = formatter.formatToParts(new Date());
+    const timeObj = {};
+    parts.forEach(({ type, value }) => {
+      if (type !== "literal") {
+        timeObj[type] = parseInt(value, 10);
+      }
+    });
+    return timeObj;
+  };
+
+  const { hour: hours, minute: minutes, second: seconds } = getLondonTime();
 
   const hourDegrees = ((hours % 12) + minutes / 60) * 30;
   const minuteDegrees = (minutes + seconds / 60) * 6;
   const secondDegrees = seconds * 6;
-
+  
   return (
     <div className="clock-container">
     <div className="clock">
