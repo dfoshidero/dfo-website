@@ -9,7 +9,7 @@
   align-items: center;
   /* Vertically center items */
   justify-content: space-between;
-  margin: 14px 7px;
+  margin: 0 7px 7px 7px;
   border-bottom: $line-width solid $border-color;
   position: relative; // Add relative positioning to the parent
 
@@ -43,12 +43,12 @@
 
 .profile-name-title {
   display: flex;
-  padding: 2% 0.5%;
+  padding: 1.5% 0.5%;
   align-items: center;
 
   @media (max-width: calc(4 * $min-card-width)) {
     flex-direction: column;
-    padding: 2% 0 ;
+    padding: 1% 0 ;
   }
 }
 

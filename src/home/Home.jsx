@@ -46,14 +46,16 @@ function Home() {
   return (
     <div>
       <div className="page-framer" key={layoutComponents}>
-      {showScrollIndicator && <ScrollIndicator />}
-        <Header onRandomizeClick={refreshLayouts} />
-        <div className="main-content-framer" ref={containerRef} >
-          {layoutComponents.map((LayoutComponent, index) => (
-            <LayoutComponent key={index} />
-          ))}
+        <div className="page-centering">
+          {showScrollIndicator && <ScrollIndicator />}
+          <Header onRandomizeClick={refreshLayouts} />
+          <div className="main-content-framer" ref={containerRef}>
+            {layoutComponents.map((LayoutComponent, index) => (
+              <LayoutComponent key={index} />
+            ))}
+          </div>
+          <Footer />
         </div>
-        <Footer />
       </div>
     </div>
   );

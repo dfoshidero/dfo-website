@@ -57,6 +57,10 @@
 
     /* Stack header and main content vertically */
 
+    .page-centering {
+        margin-top: auto;
+        margin-bottom: auto;
+
     .main-content-framer {
         display: grid;
         grid-template-columns: repeat(6, 190px); // Six columns
@@ -139,7 +143,6 @@
         .one-row {
             grid-row: span 1; // Quarter height, covering one row
         }
-
-        // ... Additional sizing classes as needed
     }
+}
 }
