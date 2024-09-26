@@ -4,6 +4,7 @@ import { ModalContext } from '../../utils/modalContext';
 
 import './Experience.scss';
 
+import logoETAS from "../../assets/images/logos/etas.png"; 
 import logoKTC from '../../assets/images/logos/ktc.png'; 
 import logoDATERN from '../../assets/images/logos/datern.png'; 
 import logoSkillsCoCreator from '../../assets/images/logos/university_of_bath.png'; 
@@ -15,9 +16,24 @@ import logoAHMM from '../../assets/images/logos/ahmm.png';
 const experiences = [
   {
     id: 1,
+    title: "Software Engineer // ETAS (Bosch)",
+    location: "Manchester, England, United Kingdom",
+    shortdesc:
+      "Recently joined team delivering intelligent diagnostics and data services through GradeX Insight updates and MLR (Most Likely Repair) software using sequential pattern mining for vehicle component breakdown predictions.",
+    longdesc: `
+    <p>ETAS, a subsidiary of Bosch, specializes in the development of software for the automotive industry, focused on diagnostics, performance, and efficiency.</p>
+    <p>Currently as a Software Engineer at ETAS, I work as part of team developing MLR (Most Likely Repair) software, leveraging sequential pattern mining for next-likely vehicle component breakdown predictions.</p>
+     `,
+    skills:
+      "Software Design · Software Development · Python · Neo4j · AWS · Angular",
+    logo: logoETAS,
+  },
+  {
+    id: 2,
     title: "Graduate Data Analyst // KTC",
     location: "Wolverhampton, England, United Kingdom",
-    shortdesc: "Migration of BI data from CSV to an automated SQL database, and automation of Sales Reporting Dashboard for reducion of manual errors and improved reporting efficiency.",
+    shortdesc:
+      "Migration of BI data from CSV to an automated SQL database, and automation of Sales Reporting Dashboard for reducion of manual errors and improved reporting efficiency.",
     longdesc: `<p>KTC (Edibles) is one of the UK's largest providers of edible oils, canned groceries, and condiments.</p>
 
     <p>In my role as a Data Analyst at KTC, I conducted the migration of the company's Business Insight data from a local CSV environment to an automated SQL database, as well as simultaneously enhancing their overall Sales Reporting Dashboard. The aim was to eliminate manual processes to minimise human errors, and ensure daily automatic data updates for accurate reporting. Further changes were implemented as needed to improve dashboard usability and flexibility, introducing features such as financial rebate adjustments or contract management. My responsibilities here included:</p>
@@ -39,14 +55,16 @@ const experiences = [
         <li>Implementing Row Level Security features to control dashboard access based on individual role/responsibilities.</li>
     </ul>
      `,
-     skills: "Analytical Skills · Interpreting Data · Databases · Visual Basic for Applications (VBA) · Microsoft Excel · Microsoft Power BI · SQL",
-    logo: logoKTC
+    skills:
+      "Analytical Skills · Interpreting Data · Databases · Visual Basic for Applications (VBA) · Microsoft Excel · Microsoft Power BI · SQL",
+    logo: logoKTC,
   },
   {
-    id: 2,
+    id: 3,
     title: "Data Science Intern // Datern",
     location: "Remote",
-    shortdesc: "Datern programme included SQL, PowerBI, and Python for Data Analysis. Contributed through data insight extractions, data cleaning and processing, impactful visualizations, utilisation of web scraping and machine learning techniques, and active participation in team meetings and discussions.",
+    shortdesc:
+      "Datern programme included SQL, PowerBI, and Python for Data Analysis. Contributed through data insight extractions, data cleaning and processing, impactful visualizations, utilisation of web scraping and machine learning techniques, and active participation in team meetings and discussions.",
     longdesc: `<p>As a Data Science Intern at Datern, a company specializing in data science training, I was immersed in an environment dedicated to developing the foundational skills of data analysis. The internship provided a practical and comprehensive understanding of various tools and techniques essential in the field of data science. My training and responsibilities included:</p>
 
     <ul>
@@ -59,14 +77,16 @@ const experiences = [
         <li>Actively contributing to team meetings and discussions, offering data-driven perspectives and solutions.</li>
     </ul>
     `,
-    skills: "Analytical Skills · Interpreting Data · Databases · Python (Programming Language) · Microsoft Power BI · SQL",
-    logo: logoDATERN
+    skills:
+      "Analytical Skills · Interpreting Data · Databases · Python (Programming Language) · Microsoft Power BI · SQL",
+    logo: logoDATERN,
   },
   {
-    id: 3,
+    id: 4,
     title: "Skills Co-Creator & Senior Ambassador // University of Bath",
     location: "Bath, England, United Kingdom | Hybrid",
-    shortdesc: "Collaborated on the improvement and promotion of resources for the University's Skill Centre. Largely focused on program design, content review, and video creation on various topics.",
+    shortdesc:
+      "Collaborated on the improvement and promotion of resources for the University's Skill Centre. Largely focused on program design, content review, and video creation on various topics.",
     longdesc: `<p>As a Skills Co-Creator and Senior Student Ambassador at the University of Bath's Skill Centre, I was part of a dynamic team dedicated to developing and enhancing skill-building resources for student groups. My role involved in-depth research, creative design, and effective communication to bridge skill gaps among students. Key responsibilities and tasks included:</p>
 
     <ul>
@@ -76,14 +96,16 @@ const experiences = [
         <li>Contributing to the creation of engaging video content on diverse topics, including exam preparation and mental health awareness.</li>
     </ul>
     `,
-    skills: "Management · Analytical Skills · Interpreting Data · Databases · Constructive Feedback · User Experience Testing · Community Outreach · Research · Communication",
-    logo: logoSkillsCoCreator
+    skills:
+      "Management · Analytical Skills · Interpreting Data · Databases · Constructive Feedback · User Experience Testing · Community Outreach · Research · Communication",
+    logo: logoSkillsCoCreator,
   },
   {
-    id: 4,
+    id: 5,
     title: "Chair // University of Bath African-Caribbean Society",
     location: "Bath, England, United Kingdom",
-    shortdesc: "Directed the ACS within external and internal contexts, overseeing committee affairs, ensuring member wellbeing, managing finances, organizing events, and representing the student group in marketing and communication concerns.",
+    shortdesc:
+      "Directed the ACS within external and internal contexts, overseeing committee affairs, ensuring member wellbeing, managing finances, organizing events, and representing the student group in marketing and communication concerns.",
     longdesc: `<p>As the Chair of the University of Bath African & Caribbean Society, I played a pivotal role in overseeing the society's functions, focusing on the education, entertainment, and empowerment of individuals from diverse backgrounds, particularly emphasizing Afro-Caribbean culture. My responsibilities were geared towards enriching student experiences and effectively managing the society's activities and goals. Key duties included:</p>
 
     <ul>
@@ -95,14 +117,16 @@ const experiences = [
         <li>Representing the society in various forums, handling marketing, and managing communications.</li>
     </ul>
     `,
-    skills: "Management · Analytical Skills · Fundraising · Strategic Planning · Event Management · Communication · Team Leadership · External Relations · Community Engagement",
-    logo: logoACSChair
+    skills:
+      "Management · Analytical Skills · Fundraising · Strategic Planning · Event Management · Communication · Team Leadership · External Relations · Community Engagement",
+    logo: logoACSChair,
   },
   {
-    id: 5,
+    id: 6,
     title: "Architectural Assistant // Foster + Partners",
     location: "London, England, United Kingdom",
-    shortdesc: "Contributed as part of a team responsible for the design of hotel section of a large-scale resort project in the Middle East. Utilized CAD and BIM modelling software, generated 3D renders, and designed distribution diagrams.",
+    shortdesc:
+      "Contributed as part of a team responsible for the design of hotel section of a large-scale resort project in the Middle East. Utilized CAD and BIM modelling software, generated 3D renders, and designed distribution diagrams.",
     longdesc: `<p>At Foster + Partners, a globally recognized architectural and engineering practice known for sustainable commercial design, I served as an Architectural Assistant. My role encompassed various stages of architectural design, from conceptualization to schematic design, specifically focusing on the hotel section of a major resort project in the Middle East. My duties were diverse, emphasizing both creative and technical aspects of architectural design. Responsibilities included:</p>
 
     <ul>
@@ -117,14 +141,16 @@ const experiences = [
         <li>Participating in various coordination meetings including design, visualization, and structural discussions.</li>
     </ul>
     `,
-    skills: "Adobe Photoshop · Adobe InDesign · Adobe Illustrator · Autodesk AutoCAD 2022 · Autodesk Revit 2022 · Rhinoceros 3D V7 · Enscape · Analytical Skills",
-    logo: logoFP
+    skills:
+      "Adobe Photoshop · Adobe InDesign · Adobe Illustrator · Autodesk AutoCAD 2022 · Autodesk Revit 2022 · Rhinoceros 3D V7 · Enscape · Analytical Skills",
+    logo: logoFP,
   },
   {
-    id: 6,
+    id: 7,
     title: "Architectural Assistant // RS Architects",
     location: "Barnet, England, United Kingdom",
-    shortdesc: "Handled tasks ranging production of sketches, CAD development, and planning submission for residential projects. Further undertook general office management responsibilities.",
+    shortdesc:
+      "Handled tasks ranging production of sketches, CAD development, and planning submission for residential projects. Further undertook general office management responsibilities.",
     longdesc: `<p>At RS Architects, a contemporary multi-disciplinary architectural practice specializing in residential and commercial projects in Greater London, I functioned as an Architectural Assistant. My role entailed close collaboration with the director on various architectural projects including extensions, conversions, and refurbishments of residential buildings. My responsibilities encompassed a range of creative and technical tasks, including:</p>
 
     <ul>
@@ -137,11 +163,12 @@ const experiences = [
         <li>Using Adobe Photoshop to digitally enhance photography of ongoing or completed projects for the practice’s website.</li>
     </ul>
     `,
-    skills: "Analytical Skills · Adobe Photoshop · AutoCAD · Client Engagement · Project Coordination · Planning and Design · Technical Documentation",
-    logo: logoRS
+    skills:
+      "Analytical Skills · Adobe Photoshop · AutoCAD · Client Engagement · Project Coordination · Planning and Design · Technical Documentation",
+    logo: logoRS,
   },
   {
-    id: 7,
+    id: 8,
     title: "RIBA Mentee (Internship) // Allford Hall Monoghan Morris",
     location: "Bristol, England, United Kingdom",
     shortdesc: "Mentee Future Architect.",
@@ -157,10 +184,8 @@ const experiences = [
     <p>For more details, see my <a href='https://www.linkedin.com/in/favourdo/details/experience/1612798006841/single-media-viewer/?profileId=ACoAACmhpvMB9MywAsViJ_T-Bq76dnz12-1Zx6c'>Certification</a>.</p>
     `,
     skills: "",
-    logo: logoAHMM
-  }
-
-  // ... other experiences
+    logo: logoAHMM,
+  },
 ];
 
 export default function ExperienceCard() {

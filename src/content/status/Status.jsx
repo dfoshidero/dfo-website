@@ -4,11 +4,15 @@ import './Status.scss';
 const StatusCard = () => {
   return (
     <div className="status-card">
-      <div className="status-text" style={{ backgroundColor: "white" }}>
-      Pursuing a Master's degree at the University of Bath.
+      <div className="text-container">
+        <div className="status-text">
+          Software Engineer at ETAS (Bosch).
+        </div>
       </div>
-      <div className="status-text" style={{ backgroundColor: "white" }}>
-        Currently looking for work.
+      <div className="text-container">
+        <div className="status-text">
+          Pursuing a Master's degree at the University of Buckingham.
+        </div>
       </div>
     </div>
   );

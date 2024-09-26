@@ -48,30 +48,32 @@ const skills = [
     skill: "MongoDB",
   },
   {
-    id: 10,
-    skill: "Microsoft Power BI",
+    id: 12,
+    skill: "Neo4J",
+    certified: true,
+    link: "https://graphacademy.neo4j.com/c/a313beac-9014-4ed2-ab76-ca43d0cb8bb6/",
   },
   {
     id: 11,
+    skill: "Microsoft Power BI",
+  },
+  {
+    id: 12,
     skill: "Autodesk Revit  ",
     certified: true,
     link: "https://www.linkedin.com/in/favourdo/details/certifications/1707000019275/single-media-viewer/?profileId=ACoAACmhpvMB9MywAsViJ_T-Bq76dnz12-1Zx6c",
   },
   {
-    id: 12,
+    id: 13,
     skill: "Autodesk AutoCAD",
   },
   {
-    id: 13,
+    id: 14,
     skill: "Adobe Photoshop",
   },
   {
-    id: 14,
-    skill: "Adobe Indesign",
-  },
-  {
     id: 15,
-    skill: "Enscape",
+    skill: "Adobe Indesign",
   },
 ];
 

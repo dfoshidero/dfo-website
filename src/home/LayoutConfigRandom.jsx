@@ -26,10 +26,12 @@ const cardTypes = {
     { columns: 2, rows: 2 },
     { columns: 2, rows: 3 },
   ],
-  "MY WORK(S)": [{ columns: 2, rows: 2 }],
+  "MY WORK(S)": [
+    { columns: 2, rows: 2 },
+    { columns: 2, rows: 1 },
+  ],
   "EDUCATION & CERTIFICATIONS": [
     { columns: 2, rows: 1 },
-    { columns: 1, rows: 2 },
     { columns: 2, rows: 2 },
   ],
   RECOMMENDATIONS: [{ columns: 2, rows: 1 }],
@@ -229,7 +231,7 @@ const selectRandomElement = (array) => {
 	return array[Math.floor(Math.random() * array.length)];
 };
 
-const allowAutoScroll = ["MY WORK(S)", "TECHNICAL SKILLS", "PROJECTS"];
+const allowAutoScroll = ["MY WORK(S)", "TECHNICAL SKILLS"];
 
 // Function to generate layout components based on the random layout
 export const generateLayoutComponents = (gridColumns, gridRows) => {
@@ -250,7 +252,7 @@ export const generateLayoutComponents = (gridColumns, gridRows) => {
 				//lightgreen
 				//orange
 				//red
-				extraContent = <StatusCircle color="lightgreen" />;
+				extraContent = <StatusCircle color="red" />;
 				break;
 			case "RECOMMENDATIONS":
 				extraContent = (

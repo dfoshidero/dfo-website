@@ -3,7 +3,6 @@ import './Projects.scss';
 
 import PlayCircleOutlineIcon from '@mui/icons-material/PlayCircleOutline';
 
-import poolImage from "../../assets/images/project-icons/pool.png";
 import bloomImage from '../../assets/images/project-icons/bloom.png';
 import chip8Image from '../../assets/images/project-icons/chip-8.png';
 import personalWebsite from '../../assets/images/project-icons/personal-website.png';
@@ -20,16 +19,6 @@ const projects = [
   },
   {
     id: 4,
-    title: "Pool | Hack South West 2024 Hackathon",
-    description:
-      "Hackathon Runner-Up: Pool, is a platform for expense-sharing and straightforward investment. It offers returns on investment for projects through community support.",
-    stack: "JavaScript with React-Native, Node.js, Firebase",
-    imageUrl: poolImage,
-    projectUrl: "https://devpost.com/software/pool-nzrkq8",
-    videoUrl: "https://www.youtube.com/watch?v=VJa4_xRdSYE",
-  },
-  {
-    id: 3,
     title: "Bloom",
     description:
       "Bloom is an educational mobile app by Team Plum for University of Bath's CM50109 module. It teaches indoor plant care and offers interactive gameplay with rewards.",
